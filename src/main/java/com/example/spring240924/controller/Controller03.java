@@ -14,12 +14,18 @@ public class Controller03 {
         System.out.println("Controller03.sub1");
     }
 
-    // ?address=seoul
+    // /main3/sub2?address=seoul
     @RequestMapping("/main3/sub2")
-    public void method2(@RequestParam(value = "address") String param){ //value 생략 가능
+    public void method2(@RequestParam(name = "address") String param){
         System.out.println("param = " + param);
     }
-//?? 순서 어짜다 밀렸니
+    
+    // ?address=seoul
+    @RequestMapping("/main3/sub3")
+    public void method3(@RequestParam(value = "address") String param){ //value 생략 가능
+        System.out.println("param = " + param);
+    }
+
     // ?address-seoul
     @RequestMapping("/main3/sub4")
     public void method4(@RequestParam("address") String param){ //value 생략 가능

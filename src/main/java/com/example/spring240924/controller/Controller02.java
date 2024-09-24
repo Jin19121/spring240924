@@ -8,7 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 @Controller
 public class Controller02 {
 
-    //localhost:8081/main2/sub1
+    //localhost:8080/main2/sub1
     @RequestMapping("/main2/sub1")
     public void sub1(WebRequest request){
         String name = request.getParameter("name");
@@ -16,7 +16,7 @@ public class Controller02 {
         System.out.println("Controller02.sub1");
     }
     
-    //localhost:8081/main2/sub2?address=seoul
+    //localhost:8080/main2/sub2?address=seoul
     //콘솔에 address, parameter(seoul) 출력
     @RequestMapping(path = "/main2/sub2")
     public void sub2(WebRequest request){
@@ -55,7 +55,7 @@ public class Controller02 {
         String[] param2s = request.getParameterValues("param2");
         System.out.println("param1 = " + param1);
         System.out.println("param2s = " + param2s[0]);
-        System.out.println("param2s = " + param2s[1]); //왜 values3가 안 뜨지
+        System.out.println("param2s = " + param2s[1]);
     }
 
     // hobby=축구&hobby=야구&hobby=농구&name=흥민
