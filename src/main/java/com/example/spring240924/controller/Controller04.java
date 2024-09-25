@@ -19,7 +19,7 @@ public class Controller04 {
 
     @RequestMapping("sub2")
     public void sub2(){
-        System.out.println("Controller04.sub2!!");
+        System.out.println("Controller04.sub2");
     }
 
 
