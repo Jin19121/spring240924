@@ -11,5 +11,4 @@ public class Player {
     final int age;
     private final String name;
     private Boolean married; //RequiredArgsConstructor에 포함 안됨
-
 }

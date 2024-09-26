@@ -6,12 +6,12 @@
 <body>
 <p>${data.list1[0]}</p>
 <p>${data.list1[1]}</p>
-<p>${data.["list1"][2]}</p>
+<p>${data["list1"][2]}</p>
 <hr>
 <p>${data.languages[0]}</p>
 <p>${data.languages[1]}</p>
 <p>${data.languages[2]}</p>
-<p>${data.["languages"][3]}</p>
+<p>${data["languages"][3]}</p>
 
 </body>
 </html>

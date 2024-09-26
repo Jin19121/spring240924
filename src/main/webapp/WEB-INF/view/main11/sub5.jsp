@@ -36,6 +36,5 @@
     <p>${students[3].score}</p>
     <p>${students[3].email}</p>
 </div>
-<hr>
 </body>
 </html>
