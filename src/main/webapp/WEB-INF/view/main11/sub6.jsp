@@ -1,0 +1,29 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>main11/sub6</title>
+</head>
+<body>
+${carList[0].modelName}
+<br>
+${carList[0].price}
+<br>
+${carList[0].expired}
+<br>
+<hr>
+${carList[1].modelName}
+<br>
+${carList[1].price}
+<br>
+${carList[1].expired}
+<br>
+<hr>
+${carList[2].modelName}
+<br>
+${carList[2].price}
+<br>
+${carList[2].expired}
+<br>
+<hr>
+</body>
+</html>
