@@ -47,7 +47,7 @@ public class Controller10 {
         com.setId(99);
         com.setName("intel");
         com.setModel("model 10-3");
-        com.setExpired(true); //이거 setter확인해보기
+        com.setExpired(true);
         model.addAttribute("computer", com);
         return null;
     }

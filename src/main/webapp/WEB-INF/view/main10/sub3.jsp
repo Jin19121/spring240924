@@ -9,6 +9,7 @@
 <p>${computer.model}</p>
 <p>${computer.isExpired()}</p>
 <p>${computer.expired}</p>
+<p>${computer.married}</p>
 
 <%--<p>${computer.type}</p> x--%>
 <%--model property만 있고 type property는 생기지 않음--%>

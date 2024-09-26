@@ -5,6 +5,15 @@ public class Computer {
     private String name;
     private String type;
     private boolean expired;
+    private Boolean married;
+
+    public Boolean getMarried() {
+        return married;
+    }
+
+    public void setMarried(Boolean married) {
+        this.married = married;
+    }
 
     //property가 boolean타입이면 get메소드는 is로 시작
     public boolean isExpired() {

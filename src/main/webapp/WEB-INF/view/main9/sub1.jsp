@@ -130,6 +130,7 @@ repellendus sequi tempore! Ab distinctio ducimus est illo nobis non quod sequi s
 <%--lorem3--%>
 Lorem ipsum dolor.
 
+
 <%--table>thead>tr>th*4>lorem1^^^tbody>tr*3>th*4>lorem1--%>
 <table>
     <thead>
@@ -227,6 +228,7 @@ Lorem ipsum dolor.
 <h1 id="header1"></h1>
 <h1 id="header2"></h1>
 <h1 id="header3"></h1>
+
 <%--h1.note$*3--%>
 <h1 class="note1"></h1>
 <h1 class="note2"></h1>
@@ -254,6 +256,5 @@ Lorem ipsum dolor.
 <h1>
     <p></p>
 </h1>
-
 </body>
 </html>

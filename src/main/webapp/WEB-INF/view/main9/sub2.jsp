@@ -4,10 +4,12 @@
     <title>main9.sub2</title>
 </head>
 <body>
+<h1>List</h1>
 <p>${attr2[0]}</p>
 <p>${attr2["1"]}</p>
 <hr>
 
+<h1>Map</h1>
 <%--map: 속성명["키"]--%>
 <p>${attr1["name"]}</p>
 <p>${attr1["age"]}</p>
