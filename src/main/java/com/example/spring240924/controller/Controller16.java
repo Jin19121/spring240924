@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("main16")
@@ -31,6 +32,29 @@ public class Controller16 {
     }
 
     @RequestMapping("sub5")
-    public void sub5(Model model) {
+    public void sub5(
+            @RequestParam(value = "id", required = false) String id,
+            Model model,
+            HttpSession session) {
+        if (id != null && !id.isEmpty()) {
+            System.out.println("id = " + id);
+            session.setAttribute("userid", id);
+        }
+    }
+
+    @RequestMapping("sub6")
+    public void sub6(Model model, HttpSession session) {
+    }
+
+    @RequestMapping("sub7")
+    public void sub7(Model model, HttpSession session) {
+        session.invalidate();//서버에서 세선 삭제
+    }
+
+    @RequestMapping("sub9")
+    public String sub9(Model model, HttpSession session) {
+        session.invalidate();
+
+        return "redirect:/main16/sub5";
     }
 }
