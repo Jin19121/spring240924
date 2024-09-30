@@ -12,7 +12,7 @@ public class Controller16 {
     @RequestMapping("sub1")
     public void sub1(Model model, HttpSession session) {
         //session: 하나의 브라우저에서 오는 요청(request)들이 공유하는 객체
-        int r = (int) (Math.random() * 10);
+        int r = (int) (Math.random() * 10000);
         System.out.println("r = " + r);
         model.addAttribute("attr1", "hello attr" + r);
 
