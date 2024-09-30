@@ -34,7 +34,7 @@
 <p>${attr3}</p>
 
 <%--session 영역에서 꺼냄--%>
-<p>${attr34}</p>
+<p>${attr4}</p>
 
 <%--application 영역에서 꺼냄--%>
 <p>${attr5}</p>

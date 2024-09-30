@@ -31,7 +31,7 @@ public class Controller15 {
     }
 
     @RequestMapping("sub7")
-    public void sub7(Model model) {
+    public void sub7() {
     }
 
     @RequestMapping("sub9")
