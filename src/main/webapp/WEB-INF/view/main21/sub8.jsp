@@ -6,7 +6,7 @@
 </head>
 <body>
 <form action="/main21/sub9" method="post">
-    <input type="text" name="userName" value="your name">
+    <input type="text" name="userName" value="흥민">
     <br>
     <input type="number" name="age" value="0">
     <br>

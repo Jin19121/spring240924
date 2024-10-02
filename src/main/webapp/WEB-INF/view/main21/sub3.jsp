@@ -21,8 +21,9 @@
     <br>
     <button>전송</button>
 </form>
-
-<%--연습: Controller21.sub5 메소드 작성--%>
+<hr>
+<%--연습: Controller21.sub5 메소드 작성
+request paramter 가 객체의 property에 반영되어 콘솔에 출력 하는 코드--%>
 <form action="/main21/sub5" method="post">
     <input type="checkbox" name="select" value="coffee">
     커피
@@ -41,7 +42,7 @@
     <br>
     <button>전송</button>
 </form>
-
+<hr>
 <form action="/main21/sub6">
     <input type="text" name="title" value="java">
     <br>
@@ -51,7 +52,7 @@
     <br>
     <button>전송</button>
 </form>
-
+<hr>
 <form action="/main21/sub7">
     <input type="text" name="title" value="java">
     <br>
