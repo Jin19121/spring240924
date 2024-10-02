@@ -1,10 +1,7 @@
 package com.example.spring240924.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -42,7 +39,7 @@ public class Controller20 {
 
     //    @RequestMapping("sub4", method= RequestMethod.POST)
     @PostMapping("sub4")
-    public void get4() {
+    public void post4() {
         System.out.println("post 전송 방식");
     }
 
@@ -52,7 +49,15 @@ public class Controller20 {
     }
 
     @PostMapping("sub5")
-    public void get5() {
+    public void post5() {
     }
 
+//    @RequestMapping(method=RequestMethod.PATCH)
+//    @PatchMapping
+//
+//    @RequestMapping(method=RequestMethod.PUT)
+//    @PutMapping
+//
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    @DeleteMapping
 }
