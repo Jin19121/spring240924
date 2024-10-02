@@ -1,0 +1,12 @@
+package com.example.spring240924.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("main22")
+public class Controller22 {
+    @RequestMapping("sub1")
+    public void sub1() {
+    }
+}

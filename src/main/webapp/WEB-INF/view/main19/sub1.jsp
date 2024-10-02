@@ -65,6 +65,7 @@ submit 버튼 클릭 시
     <input type="checkbox" name="city" id="" value="jeju">
     Cupidtate
     <br>
+    <button>전송</button>
 </form>
 
 <hr>
