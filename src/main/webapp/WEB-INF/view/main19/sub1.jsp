@@ -39,6 +39,7 @@ submit 버튼 클릭 시
     <br>
     <button>전송</button>
 </form>
+
 <hr>
 <form action="/main19/sub4">
     <input type="text" name="name" value="흥민">

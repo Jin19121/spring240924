@@ -32,7 +32,7 @@ public class Controller19 {
         System.out.println("age = " + age);
     }
 
-    //sub1.jsp에 새 form 요소(& input 요소)를 작성해서 전송 번송 클릭하면
+    //sub1.jsp에 새 form 요소(& input 요소)를 작성해서 전송 클릭하면
     // /main19/sub3?food=피자&email=yahoo&city=인천
     @RequestMapping("sub3")
     public void sub3(WebRequest request) {
