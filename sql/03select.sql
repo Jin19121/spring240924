@@ -43,3 +43,10 @@ FROM Customers;
 SELECT DISTINCT Country
 FROM Suppliers;
 
+SELECT *
+FROM Customers;
+SELECT CustomerName, ContactName, Address
+FROM Customers;
+
+SELECT EmployeeID, FirstName, LastName, BirthDate
+FROM Employees;
