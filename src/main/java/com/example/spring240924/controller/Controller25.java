@@ -1,5 +1,6 @@
 package com.example.spring240924.controller;
 
+import com.example.spring240924.controller.dto.c24.NameList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,7 @@ public class Controller25 {
     @Autowired
     DataSource dataSource;
 
-    // /main25/sub1?country=uk => 뭔가 이상한데
+    // /main25/sub1?country=uk
     @GetMapping("sub1")
     public void sub1(Model model, String country) {
         String sql = STR."""
@@ -74,5 +75,31 @@ public class Controller25 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @GetMapping("sub3")
+    public String sub3(NameList nameList, Model model) {
+        String sql = STR."""
+                SELECT ProductName
+                FROM Products
+                WHERE Price = '\\{price}'
+                """;
+        List<String> list = new ArrayList<>();
+        try {
+            Connection conn = dataSource.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            try (conn; stmt; rs) {
+                while (rs.next()) {
+                    String name = rs.getString("ProductName");
+                    list.add(name);
+                }
+                model.addAttribute("nameList", list);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "/main25/sub2";
     }
 }
