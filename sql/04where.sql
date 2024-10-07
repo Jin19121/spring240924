@@ -23,7 +23,16 @@ WHERE Price = '10.00';
 SELECT SupplierName
 FROM Suppliers
 WHERE Country = 'Spain';
+SELECT *
+FROM Suppliers
+WHERE country = 'Spain';
+SELECT *
+FROM Suppliers
+WHERE counTRy = 'sPAin';
+#대소문자 구분없음
 
+
+# 상파울루(São Paulo)에 있는 고객들(Customers)
 SELECT CustomerName
 FROM Customers
 WHERE City = 'São Paulo';
@@ -35,6 +44,14 @@ WHERE BirthDate = '1963-08-30';
 SELECT *
 FROM Categories
 WHERE  CategoryID = 2;
+SELECT *
+FROM Categories
+WHERE  CategoryID = '2';
 
-#대소문자 구분없음
-#수형식이면 따옴표 생략 가능. 나 이거 예시 안 적음
+SELECT *
+FROM Products
+WHERE Price = '10.00';
+SELECT *
+FROM Products
+WHERE Price = 10.00;
+#수형식이면 따옴표 생략 가능
