@@ -50,3 +50,7 @@ FROM Customers;
 
 SELECT EmployeeID, FirstName, LastName, BirthDate
 FROM Employees;
+
+#상품번호, 상품명, 단위, 가격
+SELECT ProductID, ProductName, Unit, Price
+FROM Products;

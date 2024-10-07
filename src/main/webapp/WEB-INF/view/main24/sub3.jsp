@@ -11,14 +11,14 @@
 </head>
 <body>
 <table style="border-collapse: collapse" width=100%>
-    <thread>
-        <tr>
-            <th>번호</th>
-            <th>이름</th>
-            <th>성</th>
-            <th>생년월일</th>
-        </tr>
-    </thread>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>성</th>
+        <th>생년월일</th>
+    </tr>
+    </thead>
     <c:forEach items="${employeeList}" var="employee">
         <tr>
             <td>${employee.id}</td>
