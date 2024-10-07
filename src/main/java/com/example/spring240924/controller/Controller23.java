@@ -133,8 +133,7 @@ public class Controller23 {
         try (con; stmt; rs) {
             List<String> list = new ArrayList<>();
             while (rs.next()) {
-                String name = rs.getString("Country");
-                list.add(name);
+                list.add(rs.getString("Country"));
             }
             model.addAttribute("countryList", list);
         }
