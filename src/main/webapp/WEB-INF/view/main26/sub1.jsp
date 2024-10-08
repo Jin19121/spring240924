@@ -34,7 +34,7 @@
         <thead>
         <tr>
             <th>번호</th>
-            <th>삼풍명</th>
+            <th>상품명</th>
             <th>공급자 번호</th>
             <th>카테고리 번호</th>
             <th>단위</th>

@@ -77,3 +77,16 @@ SELECT *
 FROM Products
 WHERE CategoryID = 1
 ORDER BY 3, 6 DESC;
+
+#d연습
+SELECT *
+FROM Customers
+ORDER BY Country;
+
+SELECT *
+FROM Customers
+# WHERE Country = 'uk'
+ORDER BY CustomerName, ContactName;
+
+SELECT DISTINCT Country
+FROM Customers;
