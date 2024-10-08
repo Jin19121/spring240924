@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -149,7 +150,60 @@ public class Controller26 {
             }
             model.addAttribute("customerList", customers);
         }
+    }
 
+    @GetMapping("sub3")
+    public void sub3(Model model, @RequestParam(defaultValue = "") String keyword) throws SQLException {
+        String sql = STR."""
+                SELECT *
+                FROM Customers
+                WHERE CustomerName LIKE '%\{keyword}%'
+                """;
 
+        Connection con = dataSource.getConnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        List<Customer> customers = new ArrayList<>();
+        try (con; stmt; rs) {
+            while (rs.next()) {
+                Customer customer = new Customer();
+                customer.setId(rs.getString("CustomerID"));
+                customer.setCustomerName(rs.getString("CustomerName"));
+                customer.setContactName(rs.getString("ContactName"));
+                customer.setAddress(rs.getString("Address"));
+                customer.setCity(rs.getString("City"));
+                customer.setPostalCode(rs.getString("PostalCode"));
+                customer.setCountry(rs.getString("Country"));
+                customers.add(customer);
+            }
+            model.addAttribute("customerList", customers);
+        }
+    }
+
+    //상품명 검색
+    @GetMapping("sub4")
+    public void sub4(Model model, @RequestParam(defaultValue = "") String search) throws SQLException {
+        String sql = STR."""
+                SELECT *
+                FROM Products
+                WHERE ProductName LIKE '%\{search}%'
+                """;
+        Connection con = dataSource.getConnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        List<Product> products = new ArrayList<>();
+        try (con; stmt; rs) {
+            while (rs.next()) {
+                Product product = new Product();
+                product.setId(rs.getString("ProductID"));
+                product.setName(rs.getString("ProductName"));
+                product.setSupplierId(rs.getString("SupplierID"));
+                product.setCategoryId(rs.getString("CategoryID"));
+                product.setUnit(rs.getString("Unit"));
+                product.setPrice(rs.getString("Price"));
+                products.add(product);
+            }
+            model.addAttribute("productList", products);
+        }
     }
 }
