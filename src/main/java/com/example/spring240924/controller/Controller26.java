@@ -206,4 +206,35 @@ public class Controller26 {
             model.addAttribute("productList", products);
         }
     }
+
+    @GetMapping("sub5")
+    public void sub5(Model model,
+                     @RequestParam(defaultValue = "0") String start,
+                     @RequestParam(defaultValue = "300") String end) throws SQLException {
+        String sql = STR."""
+                SELECT *
+                FROM Products
+                WHERE Price
+                BETWEEN '\{start}'
+                AND '\{end}'
+                """;
+        Connection con = dataSource.getConnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        try (con; stmt; rs) {
+            List<Product> products = new ArrayList<>();
+            while (rs.next()) {
+                Product product = new Product();
+                product.setId(rs.getString("ProductID"));
+                product.setName(rs.getString("ProductName"));
+                product.setSupplierId(rs.getString("SupplierID"));
+                product.setCategoryId(rs.getString("CategoryID"));
+                product.setUnit(rs.getString("Unit"));
+                product.setPrice(rs.getString("Price"));
+                products.add(product);
+            }
+            model.addAttribute("productList", products);
+
+        }
+    }
 }
