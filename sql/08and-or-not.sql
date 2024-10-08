@@ -48,3 +48,8 @@ SELECT *
 FROM Suppliers
 WHERE Country = 'USA'
    OR Country = 'UK';
+
+#연습
+SELECT *
+FROM Products
+ORDER BY Price DESC;
