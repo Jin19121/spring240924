@@ -175,6 +175,14 @@ public class Controller27 {
         model.addAttribute("endPageNo", endPageNo);
         model.addAttribute("beginPageNo", beginPageNo);
 
+        //다음버튼 클릭 시 사용될 페이지 번호
+        Integer nextPageNo = endPageNo + 1;
+        model.addAttribute("nextPageNo", nextPageNo);
+
+        //이전버튼 클릭 시 사용될 페이지 번호
+        Integer prevPageNo = beginPageNo - 1;
+        model.addAttribute("prevPageNo", prevPageNo);
+
         String sql = """
                 SELECT *
                 FROM Customers
@@ -230,6 +238,12 @@ public class Controller27 {
 
         model.addAttribute("endPageNumber", endPageNumber);
         model.addAttribute("beginPageNumber", beginPageNumber);
+
+        Integer prevPageNumber = beginPageNumber - 1;
+        model.addAttribute("prevPageNumber", prevPageNumber);
+
+        Integer nextPageNumber = endPageNumber + 1;
+        model.addAttribute("nextPageNumber", nextPageNumber);
 
         String sql = """
                 SELECT *

@@ -3,6 +3,11 @@
 <html>
 <head>
     <title>27-6</title>
+    <style>
+        .active {
+            background-color: lightcyan;
+        }
+    </style>
 </head>
 <body>
 <h3>주문 내역 조회(page: ${param.page})</h3>
@@ -31,12 +36,25 @@
 </table>
 <hr>
 <div style="margin: 10px">
+
+    <c:url value="/main27/sub6" var="pageLink">
+        <c:param name="page" value="${prevPageNumber}"/>
+    </c:url>
+    <a href="${pageLink}">&lt;before</a>
+
     <c:forEach begin="${beginPageNumber}" end="${endPageNumber}" var="pageNumber">
-        <span class="${currentPageNumber == pageNumber?'active':''}"
-              style="background-color: lightyellow">
-            <a href="sub6?page=${pageNumber}">${pageNumber}</a>
+        <c:url value="/main27/sub6" var="link">
+            <c:param name="page" value="${pageNumber}"/>
+        </c:url>
+        <span class="${currentPageNumber == pageNumber?'active':''}">
+            <a href="${link}">${pageNumber}</a>
         </span>
     </c:forEach>
+
+    <c:url value="/main27/sub6" var="pageLink">
+        <c:param name="page" value="${nextPageNumber}"/>
+    </c:url>
+    <a href="${pageLink}">Next&gt;</a>
 </div>
 </body>
 </html>
