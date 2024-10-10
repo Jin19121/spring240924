@@ -143,4 +143,70 @@ public class Controller27 {
             model.addAttribute("orderList", o);
         }
     }
+
+    @GetMapping("sub5")
+    public void sub5(Model model,
+                     @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+                     @RequestParam(value = "count", defaultValue = "10") Integer pageCount) throws SQLException {
+        String sql = """
+                SELECT *
+                FROM Customers
+                ORDER BY CustomerID
+                LIMIT ?, ?
+                """;
+
+        Connection conn = dataSource.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, (pageNumber - 1) * pageCount);
+        pstmt.setInt(2, pageCount);
+        ResultSet rs = pstmt.executeQuery();
+        try (conn; pstmt; rs) {
+            List<Customer> list = new ArrayList<>();
+            while (rs.next()) {
+                Customer customer = new Customer();
+                customer.setId(rs.getString("CustomerId"));
+                customer.setCustomerName(rs.getString("CustomerName"));
+                customer.setContactName(rs.getString("ContactName"));
+                customer.setAddress(rs.getString("Address"));
+                customer.setCity(rs.getString("City"));
+                customer.setPostalCode(rs.getString("PostalCode"));
+                customer.setCountry(rs.getString("Country"));
+                list.add(customer);
+            }
+            model.addAttribute("customerList", list);
+        }
+    }
+
+    //최신 주문 순으로 각 페이지에 20개 씩 주문이 조회되는  페이지
+    @GetMapping("sub6")
+    public void sub6(Model model,
+                     @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+                     @RequestParam(value = "amount", defaultValue = "20") Integer pageCount
+    ) throws SQLException {
+        String sql = """
+                SELECT *
+                FROM Orders
+                ORDER BY OrderDate DESC
+                LIMIT ?, ?
+                """;
+        Connection conn = dataSource.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, pageNumber);
+        pstmt.setInt(2, pageCount);
+        ResultSet rs = pstmt.executeQuery();
+        try (conn; pstmt; rs) {
+            List<Order> list = new ArrayList<>();
+            while (rs.next()) {
+                Order order = new Order();
+                order.setOrderId(rs.getString("OrderID"));
+                order.setCustomerId(rs.getString("CustomerID"));
+                order.setCustomerId(rs.getString("CustomerID"));
+                order.setEmployeeId(rs.getString("EmployeeID"));
+                order.setOrderDate(rs.getString("OrderDate"));
+                order.setShipperId(rs.getString("ShipperID"));
+                list.add(order);
+            }
+            model.addAttribute("orderList", list);
+        }
+    }
 }
