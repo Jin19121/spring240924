@@ -37,11 +37,18 @@
 <hr>
 <div style="margin: 10px">
 
+    <c:if test="${currentPageNumber > 1}">
+        <c:url value="/main27/sub6" var="link">
+            <c:param name="page" value="1"/>
+        </c:url>
+        <a href="${link}">&lt;&lt; beginning</a>
+    </c:if>
+
     <c:if test="${not empty prevPageNumber}">
         <c:url value="/main27/sub6" var="pageLink">
             <c:param name="page" value="${prevPageNumber}"/>
         </c:url>
-        <a href="${pageLink}">&lt;before</a>
+        <a href="${pageLink}">&lt;previous</a>
     </c:if>
 
     <c:forEach begin="${beginPageNumber}" end="${endPageNumber}" var="pageNumber">
@@ -58,6 +65,13 @@
         <c:param name="page" value="${nextPageNumber}"/>
     </c:url>
     <a href="${pageLink}">Next&gt;</a>
+
+    <c:if test="${currentPageNumber<lastPageNumber}">
+        <c:url value="/main27/sub6" var="link">
+            <c:param name="page" value="${lastPageNumber}"/>
+        </c:url>
+        <a href="${link}">end&gt;&gt;</a>
+    </c:if>
 </div>
 </body>
 </html>

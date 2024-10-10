@@ -41,6 +41,13 @@
 <hr>
 <div style="margin:10px;">
 
+    <c:if test="${currentPageNo>1}">
+        <c:url value="/main27/sub5" var="Link">
+            <c:param name="page" value="1"/>
+        </c:url>
+        <a href="${Link}">&lt;&lt; 처음</a>
+    </c:if>
+
     <c:if test="${not empty prevPageNo}">
         <c:url value="/main27/sub5" var="Link">
             <c:param name="page" value="${prevPageNo}"/>
@@ -67,6 +74,12 @@
         <a href="${Link}">다음&gt;</a>
     </c:if>
 
+    <c:if test="${currentPageNo<lastPageNo}">
+        <c:url value="/main27/sub5" var="Link">
+            <c:param name="page" value="${lastPageNo}"/>
+        </c:url>
+        <a href="${Link}">끝&gt;&gt;</a>
+    </c:if>
 </div>
 </body>
 </html>
