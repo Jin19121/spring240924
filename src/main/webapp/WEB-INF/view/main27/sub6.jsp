@@ -60,11 +60,12 @@
         </span>
     </c:forEach>
 
-    <c:if test="${not empty nextPageNumber}"></c:if>
-    <c:url value="/main27/sub6" var="pageLink">
-        <c:param name="page" value="${nextPageNumber}"/>
-    </c:url>
-    <a href="${pageLink}">Next&gt;</a>
+    <c:if test="${not empty nextPageNumber}">
+        <c:url value="/main27/sub6" var="pageLink">
+            <c:param name="page" value="${nextPageNumber}"/>
+        </c:url>
+        <a href="${pageLink}">Next&gt;</a>
+    </c:if>
 
     <c:if test="${currentPageNumber<lastPageNumber}">
         <c:url value="/main27/sub6" var="link">

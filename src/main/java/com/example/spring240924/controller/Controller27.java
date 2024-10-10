@@ -147,7 +147,7 @@ public class Controller27 {
     @GetMapping("sub5")
     public void sub5(Model model,
                      @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-                     @RequestParam(value = "count", defaultValue = "10") Integer pageCount) throws SQLException {
+                     @RequestParam(value = "rowCount", defaultValue = "10") Integer rowCount) throws SQLException {
         // 총 레코드 수 조회
         String numberOfRiwSQL = """
                 SELECT COUNT(*)
@@ -160,7 +160,7 @@ public class Controller27 {
             //총 레코드 수
             Integer numberOfRows = rs2.next() ? rs2.getInt(1) : 0;
             //마지막 페이지 번호
-            Integer lastPageNumber = (numberOfRows - 1) / pageCount + 1;
+            Integer lastPageNumber = (numberOfRows - 1) / rowCount + 1;
 
             model.addAttribute("lastPageNo", lastPageNumber);
 
@@ -168,23 +168,23 @@ public class Controller27 {
             model.addAttribute("currentPageNo", pageNumber);
 
             //페이지 번호의 끝(맨 오른쪽) 값 (10개씩 보여줄 때)
-            Integer endPageNo = ((pageNumber - 1) / 10 + 1) * 10;
-            model.addAttribute("endPageNo", Math.min(endPageNo, lastPageNumber));
+            Integer endPageNumber = ((pageNumber - 1) / 10 + 1) * 10;
+            model.addAttribute("endPageNo", Math.min(endPageNumber, lastPageNumber));
 
             //페이지 번호의 시작(맨 왼쪽) 값
-            Integer beginPageNo = endPageNo - 9;
-            model.addAttribute("beginPageNo", beginPageNo);
+            Integer beginPageNumber = endPageNumber - 9;
+            model.addAttribute("beginPageNo", beginPageNumber);
 
             //다음버튼 클릭 시 사용될 페이지 번호
-            Integer nextPageNo = endPageNo + 1;
-            if (nextPageNo <= lastPageNumber) {
-                model.addAttribute("nextPageNo", nextPageNo);
+            Integer nextPageNumber = endPageNumber + 1;
+            if (nextPageNumber <= lastPageNumber) {
+                model.addAttribute("nextPageNo", nextPageNumber);
             }
 
             //이전버튼 클릭 시 사용될 페이지 번호
-            Integer prevPageNo = beginPageNo - 1;
-            if (prevPageNo > 0) {
-                model.addAttribute("prevPageNo", prevPageNo);
+            Integer prevPageNumber = beginPageNumber - 1;
+            if (prevPageNumber > 0) {
+                model.addAttribute("prevPageNo", prevPageNumber);
             }
         }
 
@@ -198,8 +198,8 @@ public class Controller27 {
 
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, (pageNumber - 1) * pageCount);
-        pstmt.setInt(2, pageCount);
+        pstmt.setInt(1, (pageNumber - 1) * rowCount);
+        pstmt.setInt(2, rowCount);
         ResultSet rs = pstmt.executeQuery();
         try (conn; pstmt; rs) {
             List<Customer> list = new ArrayList<>();
@@ -265,7 +265,7 @@ public class Controller27 {
                 """;
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, pageNumber);
+        pstmt.setInt(1, (pageNumber - 1) * pageCount);
         pstmt.setInt(2, pageCount);
         ResultSet rs = pstmt.executeQuery();
         try (conn; pstmt; rs) {
