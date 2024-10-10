@@ -162,8 +162,18 @@ public class Controller27 {
             //마지막 페이지 번호
             Integer lastPageNumber = (numberOfRows - 1) / pageCount + 1;
 
-            model.addAttribute("lastPage", lastPageNumber);
+            model.addAttribute("lastPageNo", lastPageNumber);
         }
+        //현재 페이지 번호
+        model.addAttribute("currentPageNo", pageNumber);
+
+        //페이지 번호의 끝(맨 오른쪽) 값 (10개씩 보여줄 때)
+        Integer endPageNo = ((pageNumber - 1) / 10 + 1) * 10;
+        //페이지 번호의 시작(맨 왼쪽) 값
+        Integer beginPageNo = endPageNo - 9;
+
+        model.addAttribute("endPageNo", endPageNo);
+        model.addAttribute("beginPageNo", beginPageNo);
 
         String sql = """
                 SELECT *
@@ -213,6 +223,13 @@ public class Controller27 {
             Integer lastPage = (Rows - 1) / pageCount + 1;
             model.addAttribute("lastPage", lastPage);
         }
+        model.addAttribute("currentPageNumber", pageNumber);
+
+        Integer endPageNumber = ((pageNumber - 1) / 10 + 1) * 10;
+        Integer beginPageNumber = endPageNumber - 9;
+
+        model.addAttribute("endPageNumber", endPageNumber);
+        model.addAttribute("beginPageNumber", beginPageNumber);
 
         String sql = """
                 SELECT *

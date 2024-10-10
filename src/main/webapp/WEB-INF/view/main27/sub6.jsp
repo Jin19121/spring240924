@@ -31,8 +31,11 @@
 </table>
 <hr>
 <div style="margin: 10px">
-    <c:forEach begin="1" end="${lastPage}" var="pageNumber">
-        <a href="sub6?page=${pageNumber}">${pageNumber}</a>
+    <c:forEach begin="${beginPageNumber}" end="${endPageNumber}" var="pageNumber">
+        <span class="${currentPageNumber == pageNumber?'active':''}"
+              style="background-color: lightyellow">
+            <a href="sub6?page=${pageNumber}">${pageNumber}</a>
+        </span>
     </c:forEach>
 </div>
 </body>

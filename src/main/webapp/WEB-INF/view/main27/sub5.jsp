@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
+    <style>
+        .active {
+            background-color: yellow;
+        }
+    </style>
     <title>27-5</title>
 </head>
 <body>
@@ -38,11 +43,13 @@
     <%--  방법 1, 2 있다는 거 참고
       1. a href = ${pageNumber}
       2. c:url로 걸기--%>
-    <c:forEach begin="1" end="${lastPage}" var="pageNumber">
-        <c:url value="/main27/sub5" var="pageLink">
-            <c:param name="page" value="${pageNumber}"></c:param>
+    <c:forEach begin="${beginPageNo}" end="${endPageNo}" var="pageNumber">
+        <c:url value="/main27/sub5" var="Link">
+            <c:param name="page" value="${pageNumber}"/>
         </c:url>
-        <a href="${pageLink}">${pageNumber}</a>
+        <span class="${currentPageNo == pageNumber ? 'active' : ''}">
+            <a href="${Link}">${pageNumber}</a>
+        </span>
     </c:forEach>
 </div>
 </body>
