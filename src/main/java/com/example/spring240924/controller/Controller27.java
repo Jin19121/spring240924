@@ -169,10 +169,10 @@ public class Controller27 {
 
             //페이지 번호의 끝(맨 오른쪽) 값 (10개씩 보여줄 때)
             Integer endPageNo = ((pageNumber - 1) / 10 + 1) * 10;
+            model.addAttribute("endPageNo", Math.min(endPageNo, lastPageNumber));
+
             //페이지 번호의 시작(맨 왼쪽) 값
             Integer beginPageNo = endPageNo - 9;
-
-            model.addAttribute("endPageNo", endPageNo);
             model.addAttribute("beginPageNo", beginPageNo);
 
             //다음버튼 클릭 시 사용될 페이지 번호
@@ -242,9 +242,9 @@ public class Controller27 {
             model.addAttribute("lastPageNumber", lastPageNumber);
 
             Integer endPageNumber = ((pageNumber - 1) / 10 + 1) * 10;
-            Integer beginPageNumber = endPageNumber - 9;
+            model.addAttribute("endPageNumber", Math.min(endPageNumber, lastPageNumber));
 
-            model.addAttribute("endPageNumber", endPageNumber);
+            Integer beginPageNumber = endPageNumber - 9;
             model.addAttribute("beginPageNumber", beginPageNumber);
 
             Integer prevPageNumber = beginPageNumber - 1;
