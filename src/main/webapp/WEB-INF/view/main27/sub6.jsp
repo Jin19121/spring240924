@@ -31,7 +31,7 @@
 </table>
 <hr>
 <div style="margin: 10px">
-    <c:forEach begin="1" end="20" var="pageNumber">
+    <c:forEach begin="1" end="${lastPage}" var="pageNumber">
         <a href="sub6?page=${pageNumber}">${pageNumber}</a>
     </c:forEach>
 </div>

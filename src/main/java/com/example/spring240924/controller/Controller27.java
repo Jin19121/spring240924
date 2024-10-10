@@ -148,6 +148,23 @@ public class Controller27 {
     public void sub5(Model model,
                      @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
                      @RequestParam(value = "count", defaultValue = "10") Integer pageCount) throws SQLException {
+        // 총 레코드 수 조회
+        String numberOfRiwSQL = """
+                SELECT COUNT(*)
+                FROM Customers
+                """;
+        Connection conn2 = dataSource.getConnection();
+        PreparedStatement pstmt2 = conn2.prepareStatement(numberOfRiwSQL);
+        ResultSet rs2 = pstmt2.executeQuery();
+        try (conn2; pstmt2; rs2) {
+            //총 레코드 수
+            Integer numberOfRows = rs2.next() ? rs2.getInt(1) : 0;
+            //마지막 페이지 번호
+            Integer lastPageNumber = (numberOfRows - 1) / pageCount + 1;
+
+            model.addAttribute("lastPage", lastPageNumber);
+        }
+
         String sql = """
                 SELECT *
                 FROM Customers
@@ -155,6 +172,7 @@ public class Controller27 {
                 LIMIT ?, ?
                 """;
 
+        //고객 목록 조회
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, (pageNumber - 1) * pageCount);
@@ -183,6 +201,19 @@ public class Controller27 {
                      @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
                      @RequestParam(value = "amount", defaultValue = "20") Integer pageCount
     ) throws SQLException {
+        String lastPageSQL = """
+                SELECT COUNT(*)
+                FROM Orders
+                """;
+        Connection conn2 = dataSource.getConnection();
+        PreparedStatement pstmt2 = conn2.prepareStatement(lastPageSQL);
+        ResultSet rs2 = pstmt2.executeQuery();
+        try (conn2; pstmt2; rs2) {
+            Integer Rows = rs2.next() ? rs2.getInt(1) : 0;
+            Integer lastPage = (Rows - 1) / pageCount + 1;
+            model.addAttribute("lastPage", lastPage);
+        }
+
         String sql = """
                 SELECT *
                 FROM Orders

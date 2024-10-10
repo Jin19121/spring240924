@@ -38,7 +38,7 @@
     <%--  방법 1, 2 있다는 거 참고
       1. a href = ${pageNumber}
       2. c:url로 걸기--%>
-    <c:forEach begin="1" end="20" var="pageNumber">
+    <c:forEach begin="1" end="${lastPage}" var="pageNumber">
         <c:url value="/main27/sub5" var="pageLink">
             <c:param name="page" value="${pageNumber}"></c:param>
         </c:url>
