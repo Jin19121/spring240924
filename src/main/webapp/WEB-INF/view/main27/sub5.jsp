@@ -41,10 +41,12 @@
 <hr>
 <div style="margin:10px;">
 
-    <c:url value="/main27/sub5" var="Link">
-        <c:param name="page" value="${prevPageNo}"/>
-    </c:url>
-    <a href="${Link}">&lt;이전</a>
+    <c:if test="${not empty prevPageNo}">
+        <c:url value="/main27/sub5" var="Link">
+            <c:param name="page" value="${prevPageNo}"/>
+        </c:url>
+        <a href="${Link}">&lt;이전</a>
+    </c:if>
 
     <c:forEach begin="${beginPageNo}" end="${endPageNo}" var="pageNumber">
         <%-- 링크 걸기 방법 1, 2 있다는 거 참고
@@ -58,10 +60,12 @@
         </span>
     </c:forEach>
 
-    <c:url value="/main27/sub5" var="Link">
-        <c:param name="page" value="${nextPageNo}"/>
-    </c:url>
-    <a href="${Link}">다음&gt;</a>
+    <c:if test="${not empty nextPageNo}">
+        <c:url value="/main27/sub5" var="Link">
+            <c:param name="page" value="${nextPageNo}"/>
+        </c:url>
+        <a href="${Link}">다음&gt;</a>
+    </c:if>
 
 </div>
 </body>

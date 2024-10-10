@@ -86,3 +86,9 @@ FROM Customers;
 
 SELECT COUNT(*)
 FROM Customers;
+
+SELECT COUNT(*)
+FROM Orders;
+
+SELECT *
+FROM Orders;

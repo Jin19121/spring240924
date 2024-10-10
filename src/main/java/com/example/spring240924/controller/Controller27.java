@@ -163,26 +163,32 @@ public class Controller27 {
             Integer lastPageNumber = (numberOfRows - 1) / pageCount + 1;
 
             model.addAttribute("lastPageNo", lastPageNumber);
+
+            //현재 페이지 번호
+            model.addAttribute("currentPageNo", pageNumber);
+
+            //페이지 번호의 끝(맨 오른쪽) 값 (10개씩 보여줄 때)
+            Integer endPageNo = ((pageNumber - 1) / 10 + 1) * 10;
+            //페이지 번호의 시작(맨 왼쪽) 값
+            Integer beginPageNo = endPageNo - 9;
+
+            model.addAttribute("endPageNo", endPageNo);
+            model.addAttribute("beginPageNo", beginPageNo);
+
+            //다음버튼 클릭 시 사용될 페이지 번호
+            Integer nextPageNo = endPageNo + 1;
+            if (nextPageNo <= lastPageNumber) {
+                model.addAttribute("nextPageNo", nextPageNo);
+            }
+
+            //이전버튼 클릭 시 사용될 페이지 번호
+            Integer prevPageNo = beginPageNo - 1;
+            if (prevPageNo > 0) {
+                model.addAttribute("prevPageNo", prevPageNo);
+            }
         }
-        //현재 페이지 번호
-        model.addAttribute("currentPageNo", pageNumber);
 
-        //페이지 번호의 끝(맨 오른쪽) 값 (10개씩 보여줄 때)
-        Integer endPageNo = ((pageNumber - 1) / 10 + 1) * 10;
-        //페이지 번호의 시작(맨 왼쪽) 값
-        Integer beginPageNo = endPageNo - 9;
-
-        model.addAttribute("endPageNo", endPageNo);
-        model.addAttribute("beginPageNo", beginPageNo);
-
-        //다음버튼 클릭 시 사용될 페이지 번호
-        Integer nextPageNo = endPageNo + 1;
-        model.addAttribute("nextPageNo", nextPageNo);
-
-        //이전버튼 클릭 시 사용될 페이지 번호
-        Integer prevPageNo = beginPageNo - 1;
-        model.addAttribute("prevPageNo", prevPageNo);
-
+        //고객 목록 조회
         String sql = """
                 SELECT *
                 FROM Customers
@@ -190,7 +196,6 @@ public class Controller27 {
                 LIMIT ?, ?
                 """;
 
-        //고객 목록 조회
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, (pageNumber - 1) * pageCount);
@@ -230,21 +235,28 @@ public class Controller27 {
             Integer Rows = rs2.next() ? rs2.getInt(1) : 0;
             Integer lastPage = (Rows - 1) / pageCount + 1;
             model.addAttribute("lastPage", lastPage);
+
+            model.addAttribute("currentPageNumber", pageNumber);
+
+            Integer lastPageNumber = (Rows - 1) / pageCount + 1;
+            model.addAttribute("lastPageNumber", lastPageNumber);
+
+            Integer endPageNumber = ((pageNumber - 1) / 10 + 1) * 10;
+            Integer beginPageNumber = endPageNumber - 9;
+
+            model.addAttribute("endPageNumber", endPageNumber);
+            model.addAttribute("beginPageNumber", beginPageNumber);
+
+            Integer prevPageNumber = beginPageNumber - 1;
+            if (prevPageNumber > 0) {
+                model.addAttribute("prevPageNumber", prevPageNumber);
+            }
+
+            Integer nextPageNumber = endPageNumber + 1;
+            if (nextPageNumber <= lastPageNumber) {
+                model.addAttribute("nextPageNumber", nextPageNumber);
+            }
         }
-        model.addAttribute("currentPageNumber", pageNumber);
-
-        Integer endPageNumber = ((pageNumber - 1) / 10 + 1) * 10;
-        Integer beginPageNumber = endPageNumber - 9;
-
-        model.addAttribute("endPageNumber", endPageNumber);
-        model.addAttribute("beginPageNumber", beginPageNumber);
-
-        Integer prevPageNumber = beginPageNumber - 1;
-        model.addAttribute("prevPageNumber", prevPageNumber);
-
-        Integer nextPageNumber = endPageNumber + 1;
-        model.addAttribute("nextPageNumber", nextPageNumber);
-
         String sql = """
                 SELECT *
                 FROM Orders
