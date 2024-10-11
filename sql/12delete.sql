@@ -21,3 +21,7 @@ ORDER BY CustomerID DESC;
 DELETE
 FROM Customers
 WHERE CustomerID = 104;
+
+SELECT *
+FROM Products
+ORDER BY ProductID DESC;

@@ -1,6 +1,7 @@
 package com.example.spring240924.controller;
 
 import com.example.spring240924.controller.dto.c26.Customer;
+import com.example.spring240924.controller.dto.c26.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -139,5 +140,55 @@ public class Controller28 {
 
         rttr.addAttribute("id", id);
         return "redirect:/main28/sub5";
+    }
+
+    //연습: 상품번호 조회 + 상품 삭제
+    @GetMapping("sub7")
+    public void sub7(String id, Model model) {
+        String sql = """
+                SELECT *
+                FROM Products
+                WHERE ProductId = ?
+                """;
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            try (conn; pstmt) {
+                pstmt.setString(1, id);
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    Product product = new Product();
+                    product.setId(rs.getString("ProductId"));
+                    product.setName(rs.getString("ProductName"));
+                    product.setSupplierId(rs.getString("SupplierId"));
+                    product.setCategoryId(rs.getString("CategoryId"));
+                    product.setUnit(rs.getString("Unit"));
+                    product.setPrice(rs.getString("Price"));
+                    model.addAttribute("product", product);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PostMapping("sub8")
+    public String sub8(String id) {
+        String sql = """
+                DELETE FROM Products
+                WHERE ProductId = ?
+                """;
+        try {
+            Connection con = dataSource.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            try (con; pstmt) {
+                pstmt.setString(1, id);
+                pstmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/main28/sub7";
     }
 }
