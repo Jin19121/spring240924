@@ -173,7 +173,7 @@ public class Controller28 {
     }
 
     @PostMapping("sub8")
-    public String sub8(String id) {
+    public String sub8(String id, RedirectAttributes rttr) {
         String sql = """
                 DELETE FROM Products
                 WHERE ProductId = ?
@@ -183,12 +183,16 @@ public class Controller28 {
             PreparedStatement pstmt = con.prepareStatement(sql);
             try (con; pstmt) {
                 pstmt.setString(1, id);
-                pstmt.executeUpdate();
+                int check = pstmt.executeUpdate();
+                if (check == 1) {
+                    rttr.addFlashAttribute("message", id + "번 상품 삭제 완료");
+                }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        rttr.addAttribute("id", id);
         return "redirect:/main28/sub7";
     }
 }

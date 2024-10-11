@@ -5,6 +5,9 @@
     <title>28-7</title>
 </head>
 <body>
+<c:if test="${not empty message}">
+    <h5>${message}</h5>
+</c:if>
 <h3>상품 조회</h3>
 <form>
     <input type="number" placeholder="상품 번호" name="id" value="${product.id}">
