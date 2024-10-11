@@ -197,7 +197,7 @@ public class Controller28 {
     }
 
     @PostMapping("sub9")
-    public void sub9(Customer customer) {
+    public String sub9(Customer customer, RedirectAttributes rttr) {
         String sql = """
                 UPDATE Customers
                 SET CustomerName = ?,
@@ -205,7 +205,7 @@ public class Controller28 {
                     Address = ?,
                     City = ?,
                     PostalCode = ?,
-                    Country = ?,
+                    Country = ?
                 WHERE CustomerId = ?
                 """;
 
@@ -220,10 +220,14 @@ public class Controller28 {
                 pstmt.setString(5, customer.getPostalCode());
                 pstmt.setString(6, customer.getCountry());
                 pstmt.setString(7, customer.getId());
+                pstmt.executeUpdate();
+                rttr.addFlashAttribute("message", customer.getId() + "번 고객 정보가 수정되었습니다.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        rttr.addAttribute("id", customer.getId());
+        return "redirect:/main28/sub10";
     }
 
     @GetMapping("sub10")
@@ -256,4 +260,5 @@ public class Controller28 {
             e.printStackTrace();
         }
     }
+
 }

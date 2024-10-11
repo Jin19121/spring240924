@@ -55,3 +55,7 @@ UPDATE Suppliers
 SET City='Seoul',
     Country = 'Korea'
 WHERE SupplierID = 1;
+
+SELECT *
+FROM Customers
+WHERE CustomerID = 1;
