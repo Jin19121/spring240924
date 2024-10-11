@@ -1,7 +1,9 @@
 package com.example.spring240924.controller;
 
+import com.example.spring240924.controller.dto.c26.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Controller
@@ -84,5 +87,32 @@ public class Controller28 {
         return "redirect:/main28/sub3";
     }
 
+    @GetMapping("sub5")
+    public void sub5(String id, Model model) {
+        //고객 조회 목적
+        String sql = """
+                SELECT * FROM Customers
+                WHERE CustomerId = ?
+                """;
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Customer customer = new Customer();
+                customer.setId(rs.getString("CustomerId"));
+                customer.setCustomerName(rs.getString("CustomerName"));
+                customer.setContactName(rs.getString("ContactName"));
+                customer.setAddress(rs.getString("Address"));
+                customer.setCity(rs.getString("City"));
+                customer.setPostalCode(rs.getString("PostalCode"));
+                customer.setCountry(rs.getString("Country"));
+                model.addAttribute("customer", customer);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
 }
