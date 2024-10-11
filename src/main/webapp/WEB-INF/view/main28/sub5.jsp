@@ -33,7 +33,12 @@
     <div>
         <input type="text" readonly="" value="${customer.country}">
     </div>
-
+    <div>
+        <form action="/main28/sub6" method="post">
+            <input type="hidden" name="id" value="${customer.id}">
+            <button>삭제</button>
+        </form>
+    </div>
 
 </c:if>
 <c:if test="${empty customer}">

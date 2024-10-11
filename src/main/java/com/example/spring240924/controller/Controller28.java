@@ -113,6 +113,25 @@ public class Controller28 {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    @PostMapping("sub6")
+    public String sub6(String id) {
+        String sql = """
+                DELETE FROM Customers
+                WHERE CustomerId = ?
+                """;
+
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            try (conn; pstmt) {
+                pstmt.setString(1, id);
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
