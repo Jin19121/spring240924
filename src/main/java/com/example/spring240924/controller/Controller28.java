@@ -2,6 +2,7 @@ package com.example.spring240924.controller;
 
 import com.example.spring240924.controller.dto.c26.Customer;
 import com.example.spring240924.controller.dto.c26.Product;
+import com.example.spring240924.controller.dto.c28.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -261,4 +262,67 @@ public class Controller28 {
         }
     }
 
+    //연습: 직원 정보 조회+수정
+    @PostMapping("sub11")
+    public void sub11(Employee employee) {
+        String sql = """
+                UPDATE Employees
+                SET LastName = ?,
+                    FirstName = ?,
+                    BirthDate = ?,
+                    Photo = ?,
+                    Notes = ?
+                WHERE EmployeeId = ?
+                """;
+
+        try {
+            Connection con = dataSource.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            try (con; pstmt) {
+                pstmt.setString(1, employee.getLastName());
+                pstmt.setString(2, employee.getFirstName());
+                pstmt.setString(3, employee.getBirthDate());
+                pstmt.setString(4, employee.getPhoto());
+                pstmt.setString(5, employee.getNotes());
+                pstmt.setString(6, employee.getId());
+                pstmt.executeUpdate();
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+//        return null;
+    }
+
+    @GetMapping("sub12")
+    public void sub12(String id, Model model) {
+        String sql = """
+                SELECT *
+                FROM Employees
+                WHERE EmployeeId = ?
+                """;
+
+        try {
+            Connection con = dataSource.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            try (con; pstmt) {
+                pstmt.setString(1, id);
+                ResultSet re = pstmt.executeQuery();
+                if (re.next()) {
+                    Employee employee = new Employee();
+                    employee.setId(re.getString("EmployeeId"));
+                    employee.setLastName(re.getString("LastName"));
+                    employee.setFirstName(re.getString("FirstName"));
+                    employee.setBirthDate(re.getString("BirthDate"));
+                    employee.setPhoto(re.getString("Photo"));
+                    employee.setNotes(re.getString("Notes"));
+                    model.addAttribute("employee", employee);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

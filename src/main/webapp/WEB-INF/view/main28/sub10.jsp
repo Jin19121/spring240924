@@ -5,6 +5,9 @@
     <title>28-10</title>
 </head>
 <body>
+<c:if test="${not empty message}">
+    ${message}
+</c:if>
 <h3>고객 조회 후 수정</h3>
 <form>
     고객 번호
