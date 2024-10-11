@@ -17,27 +17,27 @@
 <c:if test="${not empty product}">
     <div>
         상품 번호:
-        <input type="text" value="${product.id}">
+        <input type="text" readonly="readonly" value="${product.id}">
     </div>
     <div>
         상품명:
-        <input type="text" value="${product.name}">
+        <input type="text" readonly="readonly" value="${product.name}">
     </div>
     <div>
         공급자 번호:
-        <input type="text" value="${product.supplierId}">
+        <input type="text" readonly="readonly" value="${product.supplierId}">
     </div>
     <div>
         분류 번호:
-        <input type="text" value="${product.categoryId}">
+        <input type="text" readonly="readonly" value="${product.categoryId}">
     </div>
     <div>
         단위:
-        <input type="text" value="${product.unit}">
+        <input type="text" readonly="readonly" value="${product.unit}">
     </div>
     <div>
         가격:
-        <input type="text" value="${product.price}">
+        <input type="text" readonly="readonly" value="${product.price}">
     </div>
     <br>
     <div>
