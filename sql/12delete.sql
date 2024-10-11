@@ -1,8 +1,8 @@
 USE w3schools;
 
 #DELETE FROM 테이블명: 모든 레코드 삭제
-DELETE
-FROM Customers;
+# DELETE
+# FROM Customers;
 
 SELECT *
 FROM Customers

@@ -5,8 +5,11 @@
     <title>28-5</title>
 </head>
 <body>
+<c:if test="${not empty message}">
+    <h5 style="background-color: lightskyblue">${message}</h5>
+</c:if>
 <h3>고객 조회</h3>
-<form action="">
+<form>
     <input type="number" placeholder="고객번호" name="id">
     <button>조회</button>
 </form>
@@ -33,13 +36,13 @@
     <div>
         <input type="text" readonly="" value="${customer.country}">
     </div>
+
     <div>
         <form action="/main28/sub6" method="post">
             <input type="hidden" name="id" value="${customer.id}">
-            <button>삭제</button>
+            <button style="background-color: darkred; color: white">삭제</button>
         </form>
     </div>
-
 </c:if>
 <c:if test="${empty customer}">
     <h4>해당 번호의 고객은 존재하지 않습니다.</h4>
