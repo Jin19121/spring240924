@@ -2,47 +2,52 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>28-12</title>
+    <title>28-13</title>
 </head>
 <body>
-<h3>직원 정보 조회 및 수정</h3>
+<c:if test="${not empty message}">
+    <h5 style="background-color: skyblue">${message}</h5>
+</c:if>
+
+
+<h3>직원 조회 후 수정</h3>
 <form>
-    직원 번호
+    직원번호 :
     <input type="number" name="id" value="${param.id}">
     <button>조회</button>
 </form>
 <hr>
 <c:if test="${empty employee}">
-    <h5>유효하지 않은 직원 번호입니다.</h5>
+    <h5>조회된 결과가 없습니다.</h5>
 </c:if>
 <c:if test="${not empty employee}">
-    <form action="/main28/sub11" method="post">
+    <form action="/main28/sub14" method="post">
         <div>
-            번호:
-            <input type="number" readonly name="id" value="${employee.id}">
+            <span>번호</span>
+            <input type="text" readonly name="id" value="${employee.id}">
         </div>
         <div>
-            성씨:
+            <span>퍼스트 네임</span>
             <input type="text" name="firstName" value="${employee.firstName}">
         </div>
         <div>
-            이름:
+            <span>라스트 네임</span>
             <input type="text" name="lastName" value="${employee.lastName}">
         </div>
         <div>
-            생일:
+            <span>생일</span>
             <input type="date" name="birthDate" value="${employee.birthDate}">
         </div>
         <div>
-            사진:
+            <span>사진</span>
             <input type="text" name="photo" value="${employee.photo}">
         </div>
         <div>
-            비고:
+            <span>노트</span>
             <textarea name="notes" id="" cols="30" rows="10">${employee.notes}</textarea>
         </div>
         <div>
-            <button>수정 저장</button>
+            <button>저장</button>
         </div>
     </form>
 </c:if>

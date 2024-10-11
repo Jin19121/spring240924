@@ -265,6 +265,7 @@ public class Controller28 {
     //연습: 직원 정보 조회+수정
     @PostMapping("sub11")
     public void sub11(Employee employee) {
+        //수정 로직
         String sql = """
                 UPDATE Employees
                 SET LastName = ?,
@@ -292,11 +293,11 @@ public class Controller28 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        return null;
     }
 
     @GetMapping("sub12")
     public void sub12(String id, Model model) {
+        //조회 로직
         String sql = """
                 SELECT *
                 FROM Employees
@@ -324,5 +325,72 @@ public class Controller28 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    //따라헤보자
+    @GetMapping("sub13")
+    public void sub13(String id, Model model) {
+        //조회
+        String sql = """
+                SELECT *
+                FROM Employees
+                WHERE EmployeeId = ?
+                """;
+        try {
+            Connection con = dataSource.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            try (con; pstmt) {
+                pstmt.setString(1, id);
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    Employee e = new Employee();
+                    e.setId(rs.getString("EmployeeId"));
+                    e.setBirthDate(rs.getString("BirthDate"));
+                    e.setFirstName(rs.getString("FirstName"));
+                    e.setLastName(rs.getString("LastName"));
+                    e.setNotes(rs.getString("Notes"));
+                    e.setPhoto(rs.getString("Photo"));
+
+                    model.addAttribute("employee", e);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PostMapping("sub14")
+    public String sub14(Employee employee, RedirectAttributes rttr) {
+        //수정
+        String sql = """
+                UPDATE Employees
+                SET FirstName = ?,
+                    LastName = ?,
+                    Notes = ?,
+                    Photo = ?,
+                    BirthDate = ?
+                WHERE EmployeeId = ?
+                """;
+        try {
+            Connection con = dataSource.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            try (con; pstmt) {
+                pstmt.setString(1, employee.getFirstName());
+                pstmt.setString(2, employee.getLastName());
+                pstmt.setString(3, employee.getNotes());
+                pstmt.setString(4, employee.getPhoto());
+                pstmt.setString(5, employee.getBirthDate());
+                pstmt.setString(6, employee.getId());
+
+                pstmt.executeUpdate();
+                rttr.addFlashAttribute("message",
+                        employee.getId() + "번 직원 정보가 수정되었습니다.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        rttr.addAttribute("id", employee.getId());
+        return "redirect:/main28/sub13";
     }
 }
