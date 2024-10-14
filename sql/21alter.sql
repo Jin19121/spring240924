@@ -23,6 +23,8 @@ FROM my_table29;
 ALTER TABLE my_table29
     ADD COLUMN country VARCHAR(20);
 ALTER TABLE my_table29
-    ADD COLUMN city VARCHAR(20) AFTER email;
+    ADD COLUMN city VARCHAR(20) AFTER address;
 ALTER TABLE my_table29
     ADD COLUMN ssn VARCHAR(20) FIRST;
+
+DESC my_table29;
