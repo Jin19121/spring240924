@@ -127,4 +127,34 @@ public class Controller29 {
             ps.executeUpdate();
         }
     }
+
+    @GetMapping("sub7")
+    public void sub7() throws SQLException {
+    }
+
+    @PostMapping("sub8")
+    public void sub8(String isbn,
+                     String title,
+                     String author,
+                     Double price,
+                     LocalDate published) throws SQLException {
+        String sql = """
+                INSERT INTO db1.book
+                (isbn, title, author, price, published)
+                VALUES
+                (?, ?, ?, ? , ?)
+                """;
+        Connection conn = dataSource.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        try (conn; ps) {
+            ps.setString(1, isbn);
+            ps.setString(2, title);
+            ps.setString(3, author);
+            ps.setDouble(4, price);
+            ps.setDate(5, Date.valueOf(published));
+            ps.executeUpdate();
+        }
+
+    }
+
 }
