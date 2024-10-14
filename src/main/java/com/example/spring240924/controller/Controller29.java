@@ -1,10 +1,12 @@
 package com.example.spring240924.controller;
 
+import com.example.spring240924.controller.dto.c29.Bookshelf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -157,4 +159,32 @@ public class Controller29 {
 
     }
 
+    @GetMapping("sub9")
+    public void sub9() throws SQLException {
+    }
+
+    @PostMapping("sub10")
+    public String sub10(Bookshelf bookshelf, RedirectAttributes rttr) throws SQLException {
+        String sql = """
+                INSERT INTO db1.bookshelf
+                (isbn, title, author, price, published)
+                VALUES
+                (?, ?, ?, ?, ?)""";
+        Connection conn = dataSource.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        try (conn; ps) {
+            ps.setString(1, bookshelf.getIsbn());
+            ps.setString(2, bookshelf.getTitle());
+            ps.setString(3, bookshelf.getAuthor());
+            ps.setDouble(4, bookshelf.getPrice());
+            ps.setDate(5, Date.valueOf(bookshelf.getPublished()));
+            int count = ps.executeUpdate();
+            if (count == 1) {
+                rttr.addFlashAttribute("message", "새 책이 등록되었습니다.");
+            } else {
+                rttr.addFlashAttribute("message", "등록을 실패했습니다.");
+            }
+        }
+        return "redirect:/main29/sub9";
+    }
 }

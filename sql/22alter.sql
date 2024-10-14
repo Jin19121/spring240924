@@ -42,3 +42,15 @@ CREATE TABLE book
 
 SELECT *
 FROM book;
+
+CREATE TABLE bookshelf
+(
+    isbn      VARCHAR(20) UNIQUE NOT NULL,
+    title     VARCHAR(200)       NOT NULL,
+    author    VARCHAR(200)       NOT NULL,
+    price     INT                         DEFAULT 0,
+    published DATE               NOT NULL DEFAULT NOW()
+);
+
+SELECT *
+FROM bookshelf;
