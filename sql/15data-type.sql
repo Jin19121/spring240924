@@ -153,6 +153,9 @@ CREATE TABLE my_table14
     end_date_time   DATETIME(6)
 );#이거 insert가 잘 안되네?
 
+INSERT INTO my_table14
+    (birth_date, start_date_time) VALUE ('1997-06-23', '2024-10-14 10:35:08.123456');
+
 SELECT *
 FROM my_table14;
 
