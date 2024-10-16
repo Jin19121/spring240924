@@ -90,17 +90,25 @@ WHERE o.OrderID IS NULL;
 #1997년 1월에 주문 처리 건수를 직원별로 조회
 SELECT e.EmployeeID, e.LastName, e.FirstName, COUNT(o.OrderID)
 FROM Orders o
-         JOIN Employees e
+         JOIN Employees e #LEFT, RIGHT 해도 안됨 ->NULL 결정 되기 전에 이미 합쳐서 값
               ON o.EmployeeID = e.EmployeeID
 WHERE OrderDate LIKE '1997-01-__'
 GROUP BY e.EmployeeID;
 
-SELECT *, COUNT(e.EmployeeID)
+SELECT *
+FROM Orders
+WHERE OrderDate LIKE '1997-01-__'
+ORDER BY EmployeeID;
+
+SELECT *
+FROM Employees
+ORDER BY EmployeeID;
+
+SELECT e.EmployeeID, FirstName, LastName, COUNT(e.EmployeeID)
 FROM Employees e
          LEFT JOIN Orders o
                    ON e.EmployeeID = o.EmployeeID
-WHERE OrderDate LIKE '1997-01-__'
-GROUP BY e.EmployeeID;
+GROUP BY e.EmployeeID; #여기서 날짜 검색하는 거라 그냥 사라져버리는 거
 
 
 SELECT e.EmployeeID, FirstName, LastName, COUNT(OrderID)
