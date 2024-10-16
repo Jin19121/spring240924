@@ -1,5 +1,5 @@
 USE db1;
-
+#1NF
 #모든 레코드는 고유해야 한다.
 #적어도 하나의 UNIQUE NOT NULL(primary key) column이 있어야 한다.
 CREATE TABLE my_table30
@@ -105,3 +105,46 @@ VALUES (1, 'js'),
        (3, 'js'),
        (3, 'react'),
        (4, 'java');
+
+#정규화로 여러 테이블이 생성되었을 때 여러 테이블을 결합(join)해서 조회
+SELECT name, skill
+FROM my_table35 t35
+         JOIN my_table36 t36
+              ON t35.id = t36.t35_id;
+
+#foreign key
+CREATE TABLE my_table37
+(
+    id   INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30)
+);
+CREATE TABLE my_table38
+(
+    t37_id INT REFERENCES my_table37 (id), #--Foreign Key 제약사
+    tel    VARCHAR(30)
+);
+
+INSERT INTO my_table37
+    (name)
+VALUES ('kim'),
+       ('lee');
+SELECT *
+FROM my_table37;
+
+INSERT INTO my_table38
+VALUES (1, '222-3333'),
+       (1, '333-4444'),
+       (2, '4444-555');
+# INSERT INTO my_table38
+#     VALUE (3, '999-0000'); 제약사항으로 인해 불가
+SELECT *
+FROM my_table38;
+
+#2NF
+#부분적 함수 종속이 없어야 함
+#부분적 함수 종속: 키가 아닌 컬럼이 커컬럼 일부에 종속됨
+
+#3NF
+#이행적 종속이 없어야 함
+#이행적 종속: 키가 아닌 컬럼끼리 종속
+# -> 새 테이블로 분리 생성하여 해결
