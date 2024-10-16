@@ -88,12 +88,20 @@ FROM Customers c
 WHERE o.OrderID IS NULL;
 
 #1997년 1월에 주문 처리 건수를 직원별로 조회
-SELECT e.EmployeeID, e.LastName, e.FirstName, COUNT(o.EmployeeID)
+SELECT e.EmployeeID, e.LastName, e.FirstName, COUNT(o.OrderID)
 FROM Orders o
          JOIN Employees e
               ON o.EmployeeID = e.EmployeeID
 WHERE OrderDate LIKE '1997-01-__'
 GROUP BY e.EmployeeID;
+
+SELECT *, COUNT(e.EmployeeID)
+FROM Employees e
+         LEFT JOIN Orders o
+                   ON e.EmployeeID = o.EmployeeID
+WHERE OrderDate LIKE '1997-01-__'
+GROUP BY e.EmployeeID;
+
 
 SELECT e.EmployeeID, FirstName, LastName, COUNT(OrderID)
 FROM (SELECT *
