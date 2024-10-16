@@ -40,4 +40,5 @@ FROM Employees e
               ON ca.CategoryID = p.CategoryID
          JOIN Customers cu
               ON cu.CustomerID = o.CustomerID
-WHERE e.EmployeeID = 5;
+WHERE e.EmployeeID = 5
+ORDER BY o.OrderDate;
