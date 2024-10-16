@@ -41,7 +41,7 @@ SELECT *
 FROM my_table50
 WHERE IFNULL(id, 0) <= 3;
 
-#집계함수
+#집계함수(COUNT, SUM, AVG, MIN, MAX)
 SELECT *
 FROM my_table50;
 SELECT COUNT(id)
