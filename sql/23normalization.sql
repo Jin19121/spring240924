@@ -56,4 +56,52 @@ CREATE TABLE my_table33
     gender  VARCHAR(20)
 );
 
-#AUTO_INCREMENT
+#AUTO_INCREMENT: 순차적으로 id 자동생성
+CREATE TABLE my_table34
+(
+    id   INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20)
+);
+INSERT INTO my_table34
+    (name)
+VALUES ('kim'),
+       ('lee'),
+       ('choi');
+SELECT *
+FROM my_table34;
+
+#단일값(원자성, atomic)
+DROP TABLE my_table35;
+CREATE TABLE my_table35
+(
+    id   INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(30)
+);
+CREATE TABLE my_table36
+(
+    id     INT PRIMARY KEY AUTO_INCREMENT,
+    t35_id INT,
+    skill  VARCHAR(100)
+#     PRIMARY KEY (id, skill) 묶어서 할 수도 있음
+);
+INSERT INTO my_table35
+    (name)
+VALUES ('kim'),
+       ('lee'),
+       ('park'),
+       ('choi');
+SELECT *
+FROM my_table35;
+SELECT *
+FROM my_table36;
+
+INSERT INTO my_table36
+    (t35_id, skill)
+VALUES (1, 'js'),
+       (1, 'css'),
+       (1, 'js'),
+       (2, 'java'),
+       (2, 'html'),
+       (3, 'js'),
+       (3, 'react'),
+       (4, 'java');
