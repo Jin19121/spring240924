@@ -15,7 +15,7 @@ public class App2 {
         ApplicationContext context = SpringApplication.run(App2.class, args);
         Controller1 b1 = context.getBean(Controller1.class);
         System.out.println(System.identityHashCode(b1));
-
+//하나의 객체 생성 확인???????
         Controller1 b2 = context.getBean(Controller1.class);
         System.out.println(System.identityHashCode(b2));
 
