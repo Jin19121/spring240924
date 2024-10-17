@@ -9,7 +9,6 @@ public class App1 {
 //        SpringApplication.run(App1.class, args);
         Controller1 c1 = new Controller1();
         c1.method1();
-
     }
 }
 
