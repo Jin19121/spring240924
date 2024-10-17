@@ -68,7 +68,14 @@ SELECT COUNT(EmployeeID)
 FROM Employees;
 
 SELECT ((SELECT COUNT(OrderID) FROM Orders) / (SELECT COUNT(EmployeeID) FROM Employees));
-##아직 안 끝남
+
+SELECT e.EmployeeID, LastName, FirstName, COUNT(o.OrderID) 건
+FROM Employees e
+         JOIN Orders o
+              ON e.EmployeeID = o.EmployeeID
+GROUP BY e.EmployeeID
+HAVING 건 > (SELECT ((SELECT COUNT(OrderID) FROM Orders) / (SELECT COUNT(EmployeeID) FROM Employees)))
+ORDER BY 건 DESC;
 
 #고객이 가장 많은 국가의 고객 목록
 SELECT Country
