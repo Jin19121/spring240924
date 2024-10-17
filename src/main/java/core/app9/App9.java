@@ -11,7 +11,7 @@ public class App9 {
         Comp1 b1 = context.getBean(Comp1.class);
         Comp2 b2 = context.getBean(Comp2.class);
 
-
+        System.out.println("b2 = " + b2);
         System.out.println(b1.getComp2() == b2); //true
     }
 }

@@ -13,6 +13,6 @@ public class App8 {
 
         Component2 o = b1.getComponent2();
 
-        System.out.println(b2 == o);
+        System.out.println(b2 == o);//true
     }
 }
