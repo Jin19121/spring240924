@@ -43,4 +43,21 @@ public interface Mapper07 {
             VALUES (#{n}, #{p})
             """)
     int insert2(String n, Double p);
+
+    @Select("""
+            SELECT CustomerID id, CustomerName name, City city, Country country
+            FROM Customers
+            ORDER BY id DESC
+            LIMIT 10
+            """)
+    List<Map<String, Object>> select2();
+
+    @Select("""
+            SELECT ProductID id, ProductName name, Price price
+            FROM Products
+            ORDER BY id DESC
+            LIMIT 10
+            """)
+    List<Map<String, Object>> select3();
+
 }
