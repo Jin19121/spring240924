@@ -103,4 +103,25 @@ public interface Mapper10 {
             </script>
             """)
     Object select6(List<String> cityList);
+
+    @Select("""
+            <script>
+            SELECT *
+            FROM Customers
+            WHERE CustomerID &li; 5
+            </script>
+            """)
+    List<Object> select7();
+
+    //cdata 태그: 일반 텍스트임을 표시
+    @Select("""
+            <script>
+            <![CDATA[
+            SELECT *
+            FROM Customers
+            WHERE CustomerID < 5
+            ]]>
+            </script>
+            """)
+    List<Object> select8();
 }

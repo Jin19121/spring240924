@@ -66,5 +66,4 @@ public class Controller40 {
         mapper10.select6(List.of("seoul"));
     }
 
-
 }
