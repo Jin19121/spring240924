@@ -78,18 +78,19 @@ public interface Mapper10 {
             """)
     Map<String, Object> select4(String firstName, String lastName);
 
+
     @Select("""
-            <script>
-            SELECT * FROM Customers
-            <trim prefix="WHERE">
-            <foreach collection="countryList" item="country" separator=","
-            open="Country IN (" close=")">
-                #{country}
-            </foreach>
-            </trim>
-            </script>
+             <script>
+                 SELECT * FROM Customers
+                 <trim prefix="WHERE">
+                     <foreach collection="countryList" item="country" separator=","
+                                 open="Country IN (" close=")">
+                         #{country}
+                     </foreach>
+                 </trim>
+             </script>
             """)
-    Object select5(List<String> countryList);
+    List<Object> select5(List<String> countryList);
 
     @Select("""
             <script>
@@ -108,7 +109,7 @@ public interface Mapper10 {
             <script>
             SELECT *
             FROM Customers
-            WHERE CustomerID &li; 5
+            WHERE CustomerId &lt; 5
             </script>
             """)
     List<Object> select7();
