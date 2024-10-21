@@ -1,4 +1,7 @@
 USE db1;
+
+DROP TABLE db1.my_table58;
+
 CREATE TABLE my_table58
 (
     name  VARCHAR(30),
