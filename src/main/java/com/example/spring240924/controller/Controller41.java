@@ -22,4 +22,8 @@ public class Controller41 {
     @GetMapping("sub4")
     public void sub4() {
     }
+
+    @GetMapping("sub5")
+    public void sub5() {
+    }
 }
