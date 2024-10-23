@@ -47,7 +47,7 @@
 </div>
 <hr>
 
-<div class="d-flex justify-content-center bg-success " style="height: 300px">
+<div class="d-flex justify-content-start bg-success " style="height: 300px">
     <div>1</div>
     <div>2</div>
     <div>3</div>
