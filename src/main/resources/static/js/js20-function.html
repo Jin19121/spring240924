@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 함수(function) : 나중에 실행되기 위한 코드 블럭
+
+    // 함수 정의 방법 3가지
+    // 이름 있는 함수
+    // 이름 없는 함수
+    // arrow function
+
+    // 함수는 값이다.
+
+    // 이름 있는 함수
+    /*
+    function 함수명(파라미터목록) {
+      // 코드블럭
+    }
+     */
+    // 함수명 : lowerCamelCase
+
+    //함수 정의
+    function myFunction() {
+        console.log("함수 내의 코드들")
+    };
+
+    // 함수호출(실행)
+    //  : 함수명()
+    myFunction();
+    console.log("hi");
+    myFunction();
+
+
+    // myFunction2 작성
+    function myFunction2() {
+        console.log("myFunction2 코드들...");
+    }
+
+    myFunction2();
+
+    //호출을 정의보다 위에서 실행해도 되지만 그건 지양. 이름 있는 함수만 그렇게 할 수 있다.
+    myFunc3();
+
+    function myFunc3() {
+        console.log("myFunc3 codes")
+    }
+
+    console.log("---------------")
+    //이름 없는 함수 - 변수에 할당 후 실행 가능
+    let myFunc4 = function () {
+        console.log("이름없는 함수 코드들...");
+    }
+    myFunc4();
+
+    // 이름 없는 함수 정의
+    let myFunc5 = function () {
+        console.log("또 다른 이름없는 함수 내 코드들..");
+    }
+    myFunc5();
+
+    //이름 없는 함수는 호출보다 나중에 정의할 수 없다.
+    // myFunc6();
+    //
+    // let myFunc6 = function () {
+    //   console.log("myFunc6 코드들...")
+    // };
+
+    //arrow function (lambda와 유사)
+    // 이름 없는 함수에서 function()키워드도 생략하고 화살표 사용
+
+    //정의
+    let myFunc7 = () => {
+        console.log("애로우 평션 코드")
+    }
+    //호출
+    myFunc7();
+
+    // arrow function 정의하기
+    let myFunc8 = () => {
+        console.log("또 다른 arrow function 코드...")
+    }
+    myFunc8();
+
+</script>
+</body>
+</html>
