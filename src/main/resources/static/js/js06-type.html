@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>type</title>
+</head>
+<body>
+
+<script>
+    /*javascript의 자료형 data type
+    undefined, boolean, number, bigInt, string, symbol, object(null 포함)
+    - number, string이 상대적으로 많이 쓰이고, bigInt, symbol은 잘 쓰이지 않는다
+     */
+
+    //number
+    let a = 3;
+    let b = 3.14;
+    console.log(a, b);
+
+    let d = 10 / 3;
+    console.log(d)
+
+    //bigInt
+    let c = 9999999999999999999999999999999999999n;
+    console.log(c)
+
+    //string
+    let e = "hello"; //큰 따옴표
+    let f = 'world'; //작은 따옴표
+    let g = `java`; //backtick
+    console.log(e, f, g);
+
+    let h = "I'm iron man";
+    let i = 'Hello "world"';
+    let j = `"It's his!"`
+    console.log(h);
+    console.log(i);
+    console.log(j);
+
+    let k = "\"hi\"";
+    let l = "\'no\'";
+    let m = `
+    여러 줄
+    표현
+    가능
+    `;
+    console.log(k);
+    console.log(l);
+    console.log(m);
+
+    let age = 30;
+    let name = "son";
+    let n = "내 이름은 " + name + "이고 나이는 " + age + "입니다.";
+    console.log(n);
+
+    let o = `내 이름은 ${name}이고 나이는 ${age}입니다.`
+    console.log(o);
+
+</script>
+</body>
+</html>
