@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function func1() {
+        //함수 호출 시 실행되는 code들
+        console.log("hello")
+        console.log("javascript")
+        console.log("world")
+    }
+
+    func1();
+
+    function func2() {
+        console.log("hi")
+        console.log("함수")
+        return 3; //함수 종료
+        console.log("또 다른 코드")
+    }
+
+    func2();
+
+    console.log("-----------------------")
+
+    function func3() {
+        console.log("세번쨰 함수 코드")
+        return 3; //함수 종료, 값을 호출한 곳으로 반환
+    }
+
+    let a = func3();
+    console.log(a)
+    console.log("---")
+    let b = func3();
+    console.log(b)
+    console.log(func3())
+
+    console.log("-----------------")
+
+    function fun4(a) {
+        return a * 2
+    }
+
+    let c = fun4(5);
+    console.log(c)
+    let d = fun4(9)
+    console.log(d)
+    console.log(fun4(7))
+
+    console.log("fun5--------------")
+
+    function fun5(x) {
+        return x / 2;
+    }
+
+    let e = fun5(10);
+    console.log(e) //5
+    let f = fun5(90);
+    console.log(f);//45
+    console.log(fun5(100))
+
+    //arrow function에서 {} 내의 코드가 한 줄이면 {} 생략 가능
+    // 한 줄의 코드가 return이면 return 생략 가능
+    function fun6() {
+        console.log("a")
+    }
+
+    let fun7 = () => {
+        console.log("a")
+    }
+
+    let fun8 = () => console.log("a")
+
+    let fun9 = () => {
+        return 9
+    }
+
+    let fun10 = () => 9
+
+
+</script>
+</body>
+</html>
