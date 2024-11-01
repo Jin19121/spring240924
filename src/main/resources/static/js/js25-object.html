@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object</title>
+</head>
+<body>
+<script>
+    let a = {name: "son", age: 33};
+    console.log(a.name)
+    console.log(a.age)
+    console.log(a.city) //undefined: 없다, 존재하지 않는다
+
+    //속성값 변경
+    a.name = "lee"
+    console.log(a.name)
+    a.age = 55
+    console.log(a.age)
+    a.city = "seoul"
+    console.log(a.city)
+    console.log(a)
+
+    a["name"] = "kim"
+    a["age"] = 87
+    a["address"] = "신촌"
+    console.log(a)
+
+    let b = {
+        score: 99,
+        city: "london"
+    }
+
+    a.score = 99
+    a.city = `paris`
+    b[`country`] = `france`
+
+    console.log(b)
+
+    //메소드 변경
+    let c = {
+        info: '정보',
+        description: function () {
+            console.log("just what i needed")
+        }
+    }
+    console.log(c.info)
+    c.description()
+    c.description = function () {
+        console.log("you should take this")
+    }
+    c.description()
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object</title>
+</head>
+<body>
+<script>
+    //primitive type
+    let a = 10
+    let b = a
+
+    a = 5;
+    console.log(a, b)
+
+    //object: reference type
+    let c = {age: 55} //값 + 참조값 발생
+    let d = c; //참조값 할당
+    console.log(c.age, d.age);
+
+    c.age = 66; //값 변경, 참조값 유지
+    console.log(c.age, d.age)
+
+    //연습
+    //뭐더라
+
+    let f = {
+        name: "son",
+        info: {
+            height: 200,
+            weight: 300
+        }
+    }
+    let g = {};
+    g.name = f.name; //값 복사
+    g.info = f.info; //참조 타입 복사
+
+    console.log(f.name)
+    console.log(g.name)
+    console.log(f.info.height)
+    console.log(g.info.height)
+    console.log(f.info.weight)
+    console.log(g.info.weight)
+
+    f.name = "lee"
+    console.log(f.name) //lee
+    console.log(g.name) //son
+
+    f.info.height = 2000;
+    console.log(f.info.height) //2000
+    console.log(g.info.height) //2000
+
+
+</script>
+</body>
+</html>
