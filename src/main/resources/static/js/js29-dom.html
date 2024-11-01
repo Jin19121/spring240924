@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>document object model</title>
+</head>
+<body>
+<h1>Lorem ipsum dolor.</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque commodi consectetur dicta dignissimos dolorum
+    error est eum ex facilis fugiat iure, laborum modi nulla quasi quibusdam quis quo unde.</p>
+<ul>
+    <li>Lorem.</li>
+    <li>Aut.</li>
+    <li>Autem.</li>
+</ul>
+<script>
+    // document: 웹페이지를 표현한 객체
+    //DOM(Document Object Model : 웹페이지(문서)를 객체로 표현
+    console.log(document)
+
+    let a = document.getElementsByTagName("h1");
+    console.log(a)
+    console.log(a[0].innerText)
+
+    a[0].innerText = "새 제목"
+
+</script>
+</body>
+</html>
