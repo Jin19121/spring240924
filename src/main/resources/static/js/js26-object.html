@@ -9,6 +9,7 @@
     //primitive type
     let a = 10
     let b = a
+    console.log(a, b)
 
     a = 5;
     console.log(a, b)
@@ -22,7 +23,10 @@
     console.log(c.age, d.age)
 
     //연습
-    //뭐더라
+    let e = {city: "paris"};
+    console.log(e.city); // "paris"
+    fun1(e);
+    console.log(e.city); // "seoul"
 
     let f = {
         name: "son",
@@ -30,17 +34,18 @@
             height: 200,
             weight: 300
         }
-    }
+    };
+
     let g = {};
     g.name = f.name; //값 복사
     g.info = f.info; //참조 타입 복사
 
-    console.log(f.name)
-    console.log(g.name)
-    console.log(f.info.height)
-    console.log(g.info.height)
-    console.log(f.info.weight)
-    console.log(g.info.weight)
+    console.log(f.name); // son
+    console.log(g.name); // son
+    console.log(f.info.height); // 200
+    console.log(f.info.weight); // 300
+    console.log(g.info.height); // 200
+    console.log(g.info.weight); // 300
 
     f.name = "lee"
     console.log(f.name) //lee
