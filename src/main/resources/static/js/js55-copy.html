@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>copy</title>
+</head>
+<body>
+
+<script>
+    //배열의 복사 (primitive type)
+    let a = [3, 1, 4]
+    let b = a.filter(() => true)
+    console.log(a)
+    console.log(b)
+
+    b[0] = 33;
+
+    console.log(a)
+    console.log(b)
+
+    //얕은 복사
+    let c = [{name: "boo"}, {name: "lee"}, {name: "the8"}]
+    let d = c.filter(() => true)
+    console.log(c)
+    console.log(d)
+
+    d[0].name = "choi"
+    console.log(c)
+    console.log(d)
+
+    //깊은 복사
+    const f = c.map(e => {
+        return {...e} //spread 연산자
+    })
+    f[0].name = "gyul"
+
+    console.log(c)
+    console.log(f)
+</script>
+</body>
+</html>
