@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sort</title>
+</head>
+<body>
+<button id="a">오름차순 정렬</button>
+<button id="b">오름차순 정렬</button>
+
+<div>
+    <p>Lorem.</p>
+    <p>Possimus.</p>
+    <p>Soluta!</p>
+    <p>Fugit!</p>
+    <p>Impedit.</p>
+</div>
+
+<script>
+    const btn1 = document.querySelector("#a")
+    btn1.addEventListener("click", function () {
+        const paras = document.querySelectorAll("p")
+        const parasArray = []
+        for (const p of paras) {
+            parasArray.push(p)
+        }
+
+        parasArray.sort((e1, e2) => {
+            if (e1.innerHTML > e2.innerHTML) {
+                return 1
+            } else if (e2.innerHTML > e1.innerHTML) {
+                return -1
+            } else {
+                return 0
+            }
+        })
+        const div = document.querySelector("div")
+        parasArray.forEach(e => {
+            e.remove();
+            div.append(e)
+        })
+    })
+
+
+    const btn2 = document.querySelector("#b")
+    btn2.addEventListener("click", function () {
+        const paras = document.querySelectorAll("p")
+        const parasArray = []
+        for (const p of paras) {
+            parasArray.push(p)
+        }
+
+        parasArray.sort((e1, e2) => {
+            if (e1.innerHTML < e2.innerHTML) {
+                return 1
+            } else if (e2.innerHTML < e1.innerHTML) {
+                return -1
+            } else {
+                return 0
+            }
+        })
+        const div = document.querySelector("div")
+        parasArray.forEach(e => {
+            e.remove();
+            div.append(e)
+        })
+    })
+</script>
+</body>
+</html>
