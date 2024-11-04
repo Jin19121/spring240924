@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+<p>Lorem.</p>
+<p>Aperiam.</p>
+<p>Quasi.</p>
+<p>Ad.</p>
+<p>Consequuntur!</p>
+
+<input type="text">
+
+<script>
+    //클릭하는 p가 input에 뜨도록
+    let pa = document.querySelectorAll("p")
+    // let chosen = document.querySelector("input").value
+
+    pa.forEach((e) => {
+        e.addEventListener("click", () => {
+            document.querySelector("input").value = e.innerHTML
+        })
+    })
+</script>
+</body>
+</html>
