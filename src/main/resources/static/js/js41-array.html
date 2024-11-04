@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+<p>Lorem.</p>
+<p>Soluta.</p>
+<p>Doloremque?</p>
+<p>Maxime.</p>
+<p>Earum?</p>
+
+<script>
+    let a = ["f", "a", "k", "e", "r"]
+
+    for (let i = 0; i < a.length; i++) {
+        console.log(a[i])
+    }
+
+    for (let i = a.length - 1; i >= 0; i--) {
+        console.log(a[i])
+    }
+
+    //for of
+    for (let i of a) {
+        console.log(i)
+    }
+
+    //practice
+    //b의 모든 값 출력
+    let b = [9, 8, 7, 6, 5, 4]
+    for (let n of b) {
+        console.log(n)
+    }
+
+    //b의 요소를 모두 더한 값
+    let sum = 0;
+    for (let n of b) {
+        sum += n;
+        console.log("합: " + sum)
+    }
+
+    //
+    let paras = document.querySelector("p") //NodeList
+    console.log(paras.length)
+
+    for (let i = 0; i < paras.length; i++) {
+        console.log(paras[i].innerHTML)
+    }
+
+    for (let e of paras) {
+        console.log(e.innerHTML)
+    }
+
+    paras.push(`<p>a</p>`)
+
+
+</script>
+</body>
+</html>
