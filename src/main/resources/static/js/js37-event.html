@@ -23,12 +23,22 @@
         l.append(i);
     })
 
-    let b = document.querySelector("#btn2").addEventListener("click", function () {
-        let l = document.querySelector("#list1")
-        let i = document.createElement("li")
-        i.innerText = "짝"
-        l.append(i)
-    })
+    // 두번째 버튼 클릭시 ul 에 <li>짝</li> 가 마지막에 추가되도록 코드 작성
+    // let b = document.querySelector("#btn2").addEventListener("click", function () {
+    //     let l = document.querySelector("#list1")
+    //     let i = document.createElement("li")
+    //     i.innerText = "짝"
+    //     l.append(i)
+    // })
+
+    //혹은 (변수 설정을 줄여서)
+
+    document.querySelector("#btn2")
+        .addEventListener("click", function () {
+            let i = document.createElement("li");
+            i.innerHTML = "짝";
+            document.querySelector("#list1").append(i);
+        });
 </script>
 
 </body>

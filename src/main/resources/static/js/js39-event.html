@@ -10,5 +10,22 @@
 <div>
     <ul id="list1"></ul>
 </div>
+
+<script>
+    //imperative
+    document.querySelector("#btn1")
+        .addEventListener("click", function () {
+            const text = document.querySelector("#input1").value;
+            const li = document.createElement("li")
+            li.innerText = text;
+            const deleteButton = document.createElement("button")
+            deleteButton.addEventListener("click", function () {
+                deleteButton.parentElement.remove()
+            })
+            deleteButton.innerText = "-"
+            li.append(deleteButton)
+            document.querySelector("#list1").append(li)
+        })
+</script>
 </body>
 </html>

@@ -10,20 +10,32 @@
     +
 </button>
 
-<div>
-    <li id="list1">
+<button id="btn2">
+    -
+</button>
 
-    </li>
+<div>
+    <ul id="list1"></ul>
 </div>
 
 <script>
     let a = document.querySelector("#btn1")
-    a.addEventListener("click", function () {
-        let l = document.querySelector("#input1").value;
-        let i = document.createElement("li")
-        i.innerText = c
-        // document.querySelector("#list1").append(i) = c;
-    })
+        .addEventListener("click", function () {
+            let v = document.querySelector("#input1").value;
+            let li = document.createElement("li")
+            li.innerText = v
+            document.querySelector("#list1").append(li)
+
+            document.querySelector("#input1").value = "";
+            document.querySelector("#input1").focus()
+        })
+
+    //삭제
+    document.querySelector("#btn2")
+        .addEventListener("click", function () {
+            document.querySelector("#list1>li:last-child").remove();
+        })
+
 </script>
 </body>
 </html>
