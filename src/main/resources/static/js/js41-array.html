@@ -42,18 +42,22 @@
     }
 
     //
-    let paras = document.querySelector("p") //NodeList
-    console.log(paras.length)
+    let paras = document.querySelectorAll("p"); // NodeList
+    console.log(paras.length); // 5
 
+    console.log("for=======")
     for (let i = 0; i < paras.length; i++) {
         console.log(paras[i].innerHTML)
     }
 
+    console.log("for of======")
     for (let e of paras) {
         console.log(e.innerHTML)
     }
 
-    paras.push(`<p>a</p>`)
+    paras = Array.from(paras)
+    paras.push(`<p>a</p>`);
+    console.log(paras[paras.length - 1]);
 
 
 </script>
