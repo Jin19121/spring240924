@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>find</title>
+</head>
+<body>
+<script>
+    let a = [3, 1, 4, 1, 5, 8]
+
+    let f1 = a.find((e) => e % 2 === 0);
+    console.log(f1)
+    let f2 = a.find((e) => e % 5 === 0)
+    console.log(f2)
+
+    //연습
+    let b = [3, 1, -2, -3, 10, 8, 20, 33, 51, 55]
+
+    let f3 = b.find((e) => e < 0)
+    console.log(f3)
+    let f4 = b.find((e) => e >= 10)
+    console.log(f4)
+    let f5 = b.find((e) => e > 10)
+    console.log(f5)
+    let f6 = b.find((e) => e % 11 === 0)
+    console.log(f6)
+
+</script>
+</body>
+</html>
