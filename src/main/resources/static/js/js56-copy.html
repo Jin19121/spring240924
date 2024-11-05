@@ -73,6 +73,21 @@
     console.log(g)
     console.log(i)
 
+    //연습
+    const j = ["boo", "yoon", "the8"]
+    const k = [...j]
+    k[2] = "cherry"
+    console.log(j)
+    console.log(k)
+
+    const l = [["zzhong", "hungary"], ["dk", "happy"]]
+    const m = []
+    l.forEach(item => m.push([...item]))
+    console.log(l)
+    console.log(m)
+    m[1][0] = "boo"
+    console.log(l)
+    console.log(m)
 
 </script>
 </body>
