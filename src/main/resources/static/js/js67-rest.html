@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rest</title>
+</head>
+<body>
+
+<script>
+    //rest parameter
+    function fun1(a, b, c, d, e) {
+        console.log(a, b, c, d, e)
+    }
+
+    fun1(3, 1, 4, 1, 5)
+
+    function fun2(a, b, ...r) {
+        console.log(a, b, r)
+    }
+
+    fun2(3, 1, 4, 1, 5)
+
+    // rest parameter는 parameter 목록 마지막에 작성되어야 한다.
+    // function fun3(...r, a){}
+
+
+</script>
+</body>
+</html>
