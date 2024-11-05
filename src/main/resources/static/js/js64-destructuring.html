@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>destructure</title>
+</head>
+<body>
+<script>
+    //destructuring assignment
+    function fun1(name, city) {
+        // const name = param.name
+        // const city = param.city 방법1
+        // const {name, city} = param 밥법2
+        console.log(name, city)
+    }
+
+    const a = {name: "lee", city: "seoul"}
+    fun1(a)
+
+    //고전적 방법
+    function fun2(param) {
+        const name = param.name
+        const city = param.city
+        console.log(name, city)
+    }
+
+    fun2(a)
+
+    //연습
+    function fun3(address, title, content) {
+        console.log(address, title, content)
+    }
+
+    const b = {address: "korea", title: "vegetarian", content: "depression"}
+    fun3(b)
+
+</script>
+</body>
+</html>
