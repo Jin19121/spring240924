@@ -6,8 +6,24 @@
 </head>
 <body>
 
-<script src="https://unpkg.com/react@18/umd/react.development.js"/>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"/>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"/>
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/jsx">
+
+    /*  //일반 javascript 코드 (imperative)
+      const app = document.querySelector("#app")
+      const para = document.createElement("p")
+      para.innerHTML = "HELLO JAVASCRIPT"
+      app.append(para)
+  */
+
+    //react(declarative)
+    ReactDOM.createRoot(document.querySelector("#app"))
+        .render(<p> Hello REACT </p>)
+</script>
 </body>
 </html>
