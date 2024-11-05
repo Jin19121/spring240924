@@ -7,7 +7,7 @@
 <body>
 
 <script>
-    //rest(...)
+    //rest(...) 나머지는 배열로 받는다.
     const a = [3, 1, 4]
     const b = [...a] //spread
     const [x, y, z] = a //destructuring assign
@@ -27,6 +27,35 @@
     console.log(x1) //donald
     console.log(x2) //harris
     console.log(s) //[rose, son]
+
+    //object
+    const e = {name: "donald", city: "NW", country: "us", height: 200}
+    const {name, city, country, height} = e
+    console.log(name, city, country, height)
+
+    const f = {
+        nick: "harris",
+        address: "chicago",
+        country: "us",
+        weight: 200
+    }
+    const {nick, address, ...g} = f
+    console.log(nick)
+    console.log(address)
+    console.log(g)
+
+    //연습
+    const h = {
+        team: "t1",
+        married: true,
+        title: "정년",
+        content: "518"
+    }
+    const {team, ...i} = h
+    console.log(team)
+    console.log(i.married)
+    console.log(i.title)
+    console.log(i.content)
 
 </script>
 </body>
