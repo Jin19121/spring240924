@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rest</title>
+</head>
+<body>
+
+<script>
+    //rest(...)
+    const a = [3, 1, 4]
+    const b = [...a] //spread
+    const [x, y, z] = a //destructuring assign
+    const [n1, ...n2] = a //rest property
+    console.log(n1)
+    console.log(n2) //배열
+
+    const [...c] = a
+    console.log(c)
+
+    //끝에만 존재
+    //const [...s1, s2] = a
+
+    //연습
+    const d = ["donald", "harris", "dk", "kim"]
+    console.log(x1) //donald
+    console.log(x2) //harris
+    console.log(s) //[rose, son]
+
+</script>
+</body>
+</html>
