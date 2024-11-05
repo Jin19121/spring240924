@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>destructure</title>
+</head>
+<body>
+
+<script>
+    //destructure assignment <-> 함수
+    function fun1() {
+        return ["faker", "son", "han"];
+    }
+
+    const a = fun1();
+    console.log(a)
+    const [x, y, z] = a
+    console.log(x, y, z)
+
+    const [s1, s2, s3] = fun1()
+    console.log(s1, s2, s3)
+
+    function fun2() {
+        const a = "dk"
+        const b = () => {
+            console.log("can i be happy")
+        }
+        const c = "SVT"
+
+        return [a, b, c]
+    }
+
+    const [n1, n2, n3] = fun2()
+
+    console.log(n1, n3)
+    n2()
+</script>
+</body>
+</html>
