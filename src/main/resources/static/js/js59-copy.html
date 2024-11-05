@@ -7,12 +7,15 @@
 <body>
 
 <script>
-    //sread(...)
+    //spread(...)
     const a = [3, 1, 4]
     const b = [...a] //얕은 복사
+    b[0] = 1
 
     const c = {name: "son", city: "london"}
-    const d = {...c}
+    const d = {...c} //얕은 복사
+    console.log(c)
+    console.log(d);
     d.name = "lee"
 
     console.log(c)
