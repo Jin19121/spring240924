@@ -8,8 +8,6 @@
 <button id="btn1">button1</button>
 <button id="btn2">button2</button>
 <button id="btn3" onclick="{console.log(`세 번째 버튼`)}">button3</button>
-<button id="btn4">button4</button>
-<button id="btn5">button5</button>
 
 <hr>
 
@@ -72,7 +70,6 @@
     //input4, 5
     const inputList = document.querySelectorAll("#input4, #input5")
     for (const elem of inputList) {
-
         elem.addEventListener("keyup", () => {
             console.log(elem.value)
         })
