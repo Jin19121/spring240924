@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>destructuring</title>
+</head>
+<body>
+
+<script>
+    //destructuring assignment <-> 객체
+    const a = {name: "son", city: "seoul"}
+    const b = a.name
+    const c = a.city
+    console.log(b, c)
+    const {name: x, city: y} = a
+    console.log(x, y)
+
+    //practice
+    const d = {age: 44, song: "LMF"}
+    const {age: s, song: t} = d
+    console.log(s, t)
+
+    const {age, song} = d //변수 선언
+    // const age = d.age 중복 선언으로 인한 오류
+    // const song = d.song
+    console.log(age, song)
+
+    const e = {address: "london", email: "gmail", country: "UK"}
+    const {address, email, info} = e //모든 요소를 변수로 받을 필요 없고 요소가 없어도 새 변수를 선언할 수도 있다.
+    console.log(address, email, info)
+
+    //없으면 기본값 할당, 있으면 요소값 대입
+    const f = {desc: "hi", greeting: "hello"}
+    const {desc, greeting = "morning", weight = 99} = f
+    console.log(desc, greeting, weight)
+
+    //연습
+    const g = {height: 200, depth: 7, nick: "son"}
+    const {height, depth, nick, password = 1234} = g
+    console.log(height, depth, nick, password)
+
+</script>
+</body>
+</html>
