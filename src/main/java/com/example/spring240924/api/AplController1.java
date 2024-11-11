@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/api/main1")
@@ -31,4 +32,21 @@ public class AplController1 {
   public void sub4(@RequestBody Map<String, Object> map) {
     System.out.println(map);
   }
+
+  @PostMapping("sub6")
+  public void sub6(@RequestBody Map<String, Object> map) {
+    System.out.println(map);
+  }
+
+  @PostMapping("sub7")
+  public void sub7(@RequestBody List<Object> list) {
+    System.out.println(list);
+  }
+
+  @PostMapping("sub8")
+  public void sub8(@RequestBody List<Map<String, Object>> list) {
+    System.out.println(list);
+  }
+
+
 }
