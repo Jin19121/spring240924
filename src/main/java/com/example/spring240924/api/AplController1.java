@@ -48,5 +48,9 @@ public class AplController1 {
     System.out.println(list);
   }
 
+  @PostMapping("sub9")
+  public void sub9(@RequestBody List<Map<String, Object>> list) {
+    System.out.println(list);
+  }
 
 }
