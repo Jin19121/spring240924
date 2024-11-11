@@ -26,4 +26,9 @@ public class AplController1 {
   public void sub3(@RequestBody Map<String, Object> map) {
     System.out.println(map);
   }
+
+  @PostMapping("sub4")
+  public void sub4(@RequestBody Map<String, Object> map) {
+    System.out.println(map);
+  }
 }
