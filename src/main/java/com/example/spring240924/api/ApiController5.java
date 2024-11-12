@@ -14,4 +14,10 @@ public class ApiController5 {
     System.out.println("ApiController5.sub1");
     return "sub1";
   }
+
+  @GetMapping("sub3")
+  @ResponseBody
+  public String sub3() {
+    return "seoul";
+  }
 }
