@@ -1,6 +1,7 @@
 package com.example.spring240924.api;
 
 import com.example.spring240924.dto.a6.Customer;
+import com.example.spring240924.dto.a6.Supplier;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,5 +19,11 @@ public class ApiController6 {
   @ResponseBody
   public Customer get(@PathVariable Integer customerId) {
     return service.getCustomer(customerId);
+  }
+
+  @GetMapping("sub2/{supplierId}")
+  @ResponseBody
+  public Supplier getSupplier(@PathVariable Integer supplierId) {
+    return service.getSupplier(supplierId);
   }
 }
