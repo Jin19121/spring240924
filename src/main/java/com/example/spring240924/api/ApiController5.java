@@ -1,7 +1,11 @@
 package com.example.spring240924.api;
 
+import com.example.spring240924.dto.a5.Book;
+import com.example.spring240924.dto.a5.Company;
+import com.example.spring240924.dto.a5.Worker;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -52,5 +56,58 @@ public class ApiController5 {
                     "price", 4500,
                     "quality", "supreme"),
             "company", Map.of("location", List.of("용산", "jeju")));
+  }
+
+  @GetMapping("sub8")
+  @ResponseBody
+  public Book sub8() {
+    Book book = new Book();
+    book.setTitle("도겸시점");
+    book.setAuthor("DK");
+    book.setContent("길거리 사진");
+    book.setPrice(4500);
+
+    return book;
+  }
+
+  @GetMapping("sub9")
+  @ResponseBody
+  public Worker sub9() {
+    Worker worker = new Worker();
+    Company company = new Company();
+    company.setName("woozo");
+    company.setLocation("Hype");
+
+    worker.setName("Minghao");
+    worker.setAddress("caratLand");
+    worker.setMarried(false);
+    worker.setItems(List.of("shoes", "sheep"));
+    worker.setCompany(company);
+
+    return worker;
+  }
+
+  @GetMapping("sub10")
+  @ResponseBody
+  public List<Book> sub10() {
+    Book book1 = new Book();
+    book1.setTitle("Book 1");
+    book1.setAuthor("Author 1");
+    book1.setContent("Content 1");
+    book1.setPrice(3000);
+    
+    Book book2 = new Book();
+    book2.setTitle("Book 2");
+    book2.setAuthor("Author 2");
+    book2.setContent("Content 2");
+
+    book2.setPrice(4000);
+    Book book3 = new Book();
+    book3.setTitle("Book 3");
+    book3.setAuthor("Author 3");
+    book3.setContent("Content 3");
+    book3.setPrice(5000);
+
+    return List.of(book1, book2, book3);
   }
 }
