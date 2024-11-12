@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/api/main6")
 @RequiredArgsConstructor
 public class ApiController6 {
-  private final CustomerService service;
+  private final Service6 service;
 
   @GetMapping("sub1/{customerId}")
   @ResponseBody

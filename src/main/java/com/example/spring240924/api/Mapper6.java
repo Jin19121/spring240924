@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface CustomerMapper {
+public interface Mapper6 {
   @Select("""
           SELECT CustomerID id,
                  CustomerName name,
@@ -18,7 +18,7 @@ public interface CustomerMapper {
           FROM Customers
           WHERE CustomerID=#{customerID}
           """)
-  Customer selectById(Integer customerId);
+  Customer selectCustomerById(Integer customerId);
 
   @Select("""
           SELECT SupplierID id,
@@ -31,5 +31,5 @@ public interface CustomerMapper {
                  Phone
           FROM Suppliers
           WHERE SupplierID=#{supplierID}""")
-  Supplier selectBySupplierId(Integer supplierId);
+  Supplier selectSupplierById(Integer supplierId);
 }

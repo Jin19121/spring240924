@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class CustomerService {
-  private final CustomerMapper mapper;
+public class Service6 {
+  private final Mapper6 mapper;
 
   public Customer getCustomer(Integer customerId) {
-    return mapper.selectById(customerId);
+    return mapper.selectCustomerById(customerId);
   }
 
   public Supplier getSupplier(Integer supplierId) {
-    return mapper.selectBySupplierId(supplierId);
+    return mapper.selectSupplierById(supplierId);
   }
 }
