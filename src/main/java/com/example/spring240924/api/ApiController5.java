@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -35,4 +36,21 @@ public class ApiController5 {
     return Map.of("title", "도겸 시점", "content", "street photos", "price", 45000, "available", false);
   }
 
+  @GetMapping("sub6")
+  @ResponseBody
+  public Map<String, Object> sub6() {
+    return Map.of("name", "son",
+            "items", List.of("치킨", "돈까스", "떡볶이"),
+            "team", Map.of("name", "토트넘", "location", "런던"));
+  }
+
+  @GetMapping("sub7")
+  @ResponseBody
+  public Map<String, Object> sub7() {
+    return Map.of("product", Map.of(
+                    "name", "book",
+                    "price", 4500,
+                    "quality", "supreme"),
+            "company", Map.of("location", List.of("용산", "jeju")));
+  }
 }
