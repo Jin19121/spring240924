@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RequestMapping("/api/main1")
 @Controller
-public class AplController1 {
+public class ApiController1 {
   @PostMapping("sub1")
   public void sub1() {
     System.out.println("/api/main1/sub1으로 요청 옴");
