@@ -1,12 +1,11 @@
 package com.example.spring240924.controller;
 
-import com.example.spring240924.controller.dto.c24.NameList;
+import com.example.spring240924.dto.c24.NameList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -19,87 +18,87 @@ import java.util.List;
 @Controller
 @RequestMapping("main25")
 public class Controller25 {
-    @Autowired
-    DataSource dataSource;
+  @Autowired
+  DataSource dataSource;
 
-    // /main25/sub1?country=uk
-    @GetMapping("sub1")
-    public void sub1(Model model, String country) {
-        String sql = STR."""
+  // /main25/sub1?country=uk
+  @GetMapping("sub1")
+  public void sub1(Model model, String country) {
+    String sql = STR."""
                 SELECT CustomerName
                 FROM Customers
                 WHERE Country = '\{country}'
                 """;
 //        System.out.println();
 //        System.out.println(country + "에 있는 고객들");
-        List<String> list = new ArrayList<>();
-        try {
-            Connection conn = dataSource.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            try (conn; stmt; rs) {
-                while (rs.next()) {
-                    String name = rs.getString("CustomerName");
+    List<String> list = new ArrayList<>();
+    try {
+      Connection conn = dataSource.getConnection();
+      Statement stmt = conn.createStatement();
+      ResultSet rs = stmt.executeQuery(sql);
+      try (conn; stmt; rs) {
+        while (rs.next()) {
+          String name = rs.getString("CustomerName");
 //                    System.out.println("name = " + name);
-                    list.add(name);
-                }
-                model.addAttribute("nameList", list);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+          list.add(name);
         }
+        model.addAttribute("nameList", list);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
+  }
 
-    //연습: 특정 가격인 상품명 조회
-    @GetMapping("sub2")
-    public void sub2(Model model, String price) {
-        String sql = STR."""
+  //연습: 특정 가격인 상품명 조회
+  @GetMapping("sub2")
+  public void sub2(Model model, String price) {
+    String sql = STR."""
                 SELECT ProductName
                 FROM Products
                 WHERE Price = '\{price}'
                 """;
 
-        List<String> list = new ArrayList<>();
-        try {
-            Connection conn = dataSource.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+    List<String> list = new ArrayList<>();
+    try {
+      Connection conn = dataSource.getConnection();
+      Statement stmt = conn.createStatement();
+      ResultSet rs = stmt.executeQuery(sql);
 
-            try (conn; stmt; rs) {
-                while (rs.next()) {
-                    String name = rs.getString("ProductName");
-                    list.add(name);
-                }
-                model.addAttribute("nameList", list);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+      try (conn; stmt; rs) {
+        while (rs.next()) {
+          String name = rs.getString("ProductName");
+          list.add(name);
         }
+        model.addAttribute("nameList", list);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
+  }
 
-    @GetMapping("sub3")
-    public String sub3(NameList nameList, Model model) {
-        String sql = STR."""
-                SELECT ProductName
-                FROM Products
-                WHERE Price = '\\{price}'
-                """;
-        List<String> list = new ArrayList<>();
-        try {
-            Connection conn = dataSource.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+  @GetMapping("sub3")
+  public String sub3(NameList nameList, Model model) {
+    String sql = STR."""
+            SELECT ProductName
+            FROM Products
+            WHERE Price = '\\{price}'
+            """;
+    List<String> list = new ArrayList<>();
+    try {
+      Connection conn = dataSource.getConnection();
+      Statement stmt = conn.createStatement();
+      ResultSet rs = stmt.executeQuery(sql);
 
-            try (conn; stmt; rs) {
-                while (rs.next()) {
-                    String name = rs.getString("ProductName");
-                    list.add(name);
-                }
-                model.addAttribute("nameList", list);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+      try (conn; stmt; rs) {
+        while (rs.next()) {
+          String name = rs.getString("ProductName");
+          list.add(name);
         }
-        return "/main25/sub2";
+        model.addAttribute("nameList", list);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
+    return "/main25/sub2";
+  }
 }
