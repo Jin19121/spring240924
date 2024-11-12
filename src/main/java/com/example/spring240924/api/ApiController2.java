@@ -2,6 +2,7 @@ package com.example.spring240924.api;
 
 import com.example.spring240924.dto.a2.Book;
 import com.example.spring240924.dto.a2.Person;
+import com.example.spring240924.dto.a2.Player;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,5 +21,10 @@ public class ApiController2 {
   @PostMapping("sub2")
   public void method2(@RequestBody Book book) {
     System.out.println(book);
+  }
+
+  @PostMapping("sub3")
+  public void method3(@RequestBody Player player) {
+    System.out.println(player);
   }
 }
