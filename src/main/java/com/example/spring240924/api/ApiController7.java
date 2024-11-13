@@ -1,5 +1,6 @@
 package com.example.spring240924.api;
 
+import com.example.spring240924.dto.a6.Customer;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -80,4 +81,24 @@ public class ApiController7 {
     ResponseEntity response = ResponseEntity.status(405).body(Map.of("name", "dk", "age", 28));
     return response;
   }
+
+  @GetMapping("sub13")
+  public ResponseEntity sub13() {
+    ResponseEntity response = ResponseEntity.ok().body(new Customer());
+    return response;
+  }
+
+  @GetMapping("sub14")
+  public ResponseEntity<Object> sub14() {
+    boolean good = true;
+    if (good) {
+      ResponseEntity response = ResponseEntity.ok().body(new Customer());
+      return response;
+
+    } else {
+      ResponseEntity response = ResponseEntity.status(404).body(Map.of("name", "dk", "age", 28));
+      return response;
+    }
+  }
+
 }
