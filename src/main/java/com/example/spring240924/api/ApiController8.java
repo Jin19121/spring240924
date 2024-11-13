@@ -74,4 +74,12 @@ public class ApiController8 {
       file.transferTo(new File("C:/Temp/" + file.getOriginalFilename()));
     }
   }
+
+  @PostMapping("sub4")
+  public void method4(@RequestParam String name,
+                      @RequestParam(name = "files[]") MultipartFile[] attached) throws Exception {
+    for (MultipartFile file : attached) {
+      file.transferTo(new File("C:/Temp/" + file.getOriginalFilename()));
+    }
+  }
 }
