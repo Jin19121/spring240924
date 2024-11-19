@@ -18,6 +18,64 @@ import java.time.Instant;
 public class ApiController9 {
   final JwtEncoder jwtEncoder;
 
+  @GetMapping("sub9")
+  @PreAuthorize("hasAnyAuthority('SCOPE_manager', 'SCOPE_admin')") //복수는 hasAnyAuthority
+  public String sub9() {
+    return "어드민 or 매니저";
+  }
+
+  @GetMapping("sub8")
+  @PreAuthorize("hasAuthority('SCOPRE_manager')")
+  public String sub8() {
+    return "매니저";
+  }
+
+  @GetMapping("sub7")
+  @PreAuthorize("hasAuthority('SCOPRE_admin')")
+  public String sub7() {
+    return "어드민만";
+  }
+
+  @GetMapping("sub6")
+  public String sub6() {
+    JwtClaimsSet claims = JwtClaimsSet.builder()
+            .issuer("self") //누가
+            .subject("son") //for 누구
+            .issuedAt(Instant.now()) //언제 생성
+            .expiresAt(Instant.now().plusSeconds(30600)) //언제까지
+            .claim("scope", "admin manager") //권한
+            .build();
+    return jwtEncoder.encode(JwtEncoderParameters.from(claims))
+            .getTokenValue();
+  }
+
+  @GetMapping("sub5")
+  public String sub5() {
+    JwtClaimsSet claims = JwtClaimsSet.builder()
+            .issuer("self") //누가
+            .subject("son") //for 누구
+            .issuedAt(Instant.now()) //언제 생성
+            .expiresAt(Instant.now().plusSeconds(30600)) //언제까지
+            .claim("scope", "manager") //권한
+            .build();
+    return jwtEncoder.encode(JwtEncoderParameters.from(claims))
+            .getTokenValue();
+  }
+
+  @GetMapping("sub4")
+  public String sub4() {
+    JwtClaimsSet claims = JwtClaimsSet.builder()
+            .issuer("self") //누가
+            .subject("son") //for 누구
+            .issuedAt(Instant.now()) //언제 생성
+            .expiresAt(Instant.now().plusSeconds(30600)) //언제까지
+            .claim("scope", "admin") //권한
+            .build();
+    return jwtEncoder
+            .encode(JwtEncoderParameters.from(claims))
+            .getTokenValue();
+  }
+
   @GetMapping("sub3")
   @PreAuthorize("isAuthenticated()") //로그인한 사람
   public String sub3() {
