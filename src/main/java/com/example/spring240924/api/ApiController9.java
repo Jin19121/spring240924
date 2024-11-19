@@ -1,6 +1,7 @@
 package com.example.spring240924.api;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
@@ -17,10 +18,21 @@ import java.time.Instant;
 public class ApiController9 {
   final JwtEncoder jwtEncoder;
 
+  @GetMapping("sub3")
+  @PreAuthorize("isAuthenticated()") //로그인한 사람
+  public String sub3() {
+    return "유저만 접근 가능";
+  }
+
+  @GetMapping("sub2")
+  public String sub2() {
+    return "누구나 접근 가능";
+  }
+
   @GetMapping("sub1")
   public String sub1() {
     System.out.println("ApiController9.sub1");
-    
+
     //claim: who, for whom, when, until
     JwtClaimsSet claims = JwtClaimsSet.builder()
             .issuer("self") //누가
