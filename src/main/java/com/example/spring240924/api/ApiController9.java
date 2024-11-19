@@ -37,13 +37,13 @@ public class ApiController9 {
   }
 
   @GetMapping("sub8")
-  @PreAuthorize("hasAuthority('SCOPRE_manager')")
+  @PreAuthorize("hasAuthority('SCOPE_manager')")
   public String sub8() {
     return "매니저";
   }
 
   @GetMapping("sub7")
-  @PreAuthorize("hasAuthority('SCOPRE_admin')")
+  @PreAuthorize("hasAuthority('SCOPE_admin')")
   public String sub7() {
     return "어드민만";
   }
